@@ -1,3 +1,11 @@
 elpa/
 
 data/
+
+.emacs.desktop
+.emacs.desktop.lock
+.session
+.smex-items
+anaconda-mode/
+ditaa0_9.jar
+projectile-bookmarks.eld
