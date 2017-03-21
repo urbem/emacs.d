@@ -33,6 +33,8 @@
 ;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
+(require 'init-func)
+
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -99,6 +101,7 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
+(require 'init-golang-mode)
 (unless (version<= emacs-version "24.3")
   (require 'init-haskell))
 (require 'init-elm)
@@ -131,6 +134,9 @@
 (when *is-a-mac*
   (require-package 'osx-location))
 (require-package 'regex-tool)
+
+
+(require 'init-keys)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
