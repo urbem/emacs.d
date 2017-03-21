@@ -152,6 +152,7 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(require 'init-vars)
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings

@@ -78,5 +78,12 @@
 
 (require-package 'disable-mouse)
 
+;; linum
+(global-linum-mode t)
+(column-number-mode t)
+
+
+
+
 
 (provide 'init-gui-frames)

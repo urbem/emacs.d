@@ -4,8 +4,8 @@
 
 (require 'ispell)
 
-(setq ispell-program-name "/usr/local/bin/aspell")
-(setq ispell-personal-dictionary "~/.emacs.d/data/aspell_english")
+(setq ispell-program-name "/usr/local/bin/ispell")
+(setq ispell-personal-dictionary "~/.emacs.d/data/ispell_english")
 
 
 (defun my-save-word ()
