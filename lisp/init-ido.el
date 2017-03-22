@@ -22,6 +22,7 @@
 
 
 ;; Try out flx-ido for better flex matching between words
+(require-package 'flx-ido)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)

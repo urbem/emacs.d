@@ -16,8 +16,8 @@
  (position . 222))
 (#("lisp" 0 4
    (face ivy-virtual))
- (filename . "~/.emacs.d/lisp/")
- (front-context-string . ".dir-locals.el\n ")
- (rear-context-string . "44 Feb 13 15:59 ")
- (position . 233))
+ (filename . "~/Github/Code/lisp/")
+ (front-context-string . "asdf.lisp\n  -rw-")
+ (rear-context-string . "48 Mar 28  2015 ")
+ (position . 240))
 )
