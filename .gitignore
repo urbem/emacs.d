@@ -9,3 +9,8 @@ data/
 anaconda-mode/
 ditaa0_9.jar
 projectile-bookmarks.eld
+
+custom.el
+recentf
+projectile.cache
+history

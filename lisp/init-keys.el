@@ -16,6 +16,17 @@
 (global-set-key (kbd "C-c v f") 'hs-toggle-hiding)
 
 
+;; M-x
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
+;; ido
+(global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+
+
 
 
 (provide 'init-keys)

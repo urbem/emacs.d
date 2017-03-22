@@ -83,6 +83,9 @@
 (column-number-mode t)
 
 
+;; hightlight current line
+(global-hl-line-mode 1)
+
 
 
 

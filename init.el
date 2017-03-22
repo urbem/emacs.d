@@ -64,11 +64,12 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-smex)
+
 ;; If you really prefer ido to ivy, change the comments below. I will
 ;; likely remove the ido config in due course, though.
 ;; (require 'init-ido)
 (require 'init-ivy)
+(require 'init-smex)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
@@ -171,4 +172,4 @@
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
-;; End:
+;; init.el ends here

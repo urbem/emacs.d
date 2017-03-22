@@ -2,9 +2,10 @@
 
 (setq org-clock-persist-file "~/.emacs.d/data/org-clock-save.el")
 
-(setq savehist-file "~/.emacs.d/data/history")
+(setq recentf-max-saved-items 100)
 
-(setq recentf-save-file "~/.emacs.d/data/recentf")
+;; do it at last
+(ido-vertical-mode)
 
 
 (provide 'init-vars)
