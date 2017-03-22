@@ -4,9 +4,6 @@
 
 
 
-;; spell
-;;(add-hook 'text-mode-hook 'flyspell-mode)
-;;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (setq flycheck-flake8-maximum-line-length 100)
 

@@ -4,6 +4,12 @@
 
 (require 'ispell)
 
+
+;; spell
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+
 (setq ispell-program-name "/usr/local/bin/ispell")
 (setq ispell-personal-dictionary "~/.emacs.d/data/ispell_english")
 
