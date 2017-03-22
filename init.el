@@ -52,7 +52,7 @@
 (require-package 'mwe-log-commands)
 
 (require 'init-frame-hooks)
-(require 'init-xterm)
+;;(require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
@@ -167,7 +167,19 @@
 (require 'init-locales)
 
 
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
+
+(defun display-startup-echo-area-message ()
+  (message "Invictus Maneo!"))
+
+
 (provide 'init)
+
+
+
 
 ;; Local Variables:
 ;; coding: utf-8

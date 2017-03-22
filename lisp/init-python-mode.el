@@ -18,5 +18,7 @@
 
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
+(setq py-autopep8-options (quote ("--max-line-length=100")))
+
 
 (provide 'init-python-mode)

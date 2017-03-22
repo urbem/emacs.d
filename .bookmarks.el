@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-((#("Alauda" 0 6
+((#("ddserver" 0 8
+   (face ivy-virtual))
+ (filename . "~/Alauda/ddserver/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "78 Mar 22 13:57 ")
+ (position . 238))
+(#("Alauda" 0 6
    (face ivy-virtual))
  (filename . "~/Alauda/")
  (front-context-string . ".DS_Store\n  drwx")

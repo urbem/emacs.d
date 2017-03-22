@@ -64,8 +64,5 @@ Symbols matching the text at point are put first in the completion list."
       (goto-char position))))
 
 
-
-
-
 (provide 'init-func)
 ;;; Init-func.el ends here
