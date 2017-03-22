@@ -4,7 +4,4 @@
  recentf-exclude '("/tmp/" "/ssh:"))
 
 
-(setq recentf-save-file "~/.emacs.d/data/recentf")
-
-
 (provide 'init-recentf)
