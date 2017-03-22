@@ -64,5 +64,19 @@ Symbols matching the text at point are put first in the completion list."
       (goto-char position))))
 
 
+;; remote edit example
+(defun connect-azure ()
+  (interactive)
+  (dired "/alauda@139.217.3.183:/home/alauda/"))
+
+
+(defadvice bookmark-jump (after bookmark-jump activate)
+  (let ((latest (bookmark-get-bookmark bookmark)))
+    (setq bookmark-alist (delq latest bookmark-alist))
+    (add-to-list 'bookmark-alist latest)))
+
+
+
+
 (provide 'init-func)
 ;;; Init-func.el ends here

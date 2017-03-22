@@ -126,6 +126,11 @@
 (require 'init-folding)
 (require 'init-dash)
 (require 'init-ledger)
+
+
+
+(require 'init-ecb)
+
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
@@ -140,7 +145,7 @@
 (require 'init-keys)
 
 ;;----------------------------------------------------------------------------
-;; Allow access from emacsclient
+;; Allow access from emacs-client
 ;;----------------------------------------------------------------------------
 (require 'server)
 (unless (server-running-p)
