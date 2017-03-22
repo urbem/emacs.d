@@ -15,6 +15,10 @@
 
 ;; editing
 (global-set-key (kbd "C-c v f") 'hs-toggle-hiding)
+(global-set-key (kbd "M-j")
+                (lambda ()
+                  (interactive)
+                  (join-line -1)))
 
 
 ;; M-x

@@ -8,8 +8,21 @@
 (setq-default org-completion-use-ido t)
 (setq-default magit-completing-read-function 'magit-ido-completing-read)
 
-;;(when (maybe-require-package 'ido-ubiquitous)
-;;  (ido-ubiquitous-mode t))
+(when (maybe-require-package 'ido-ubiquitous)
+  (ido-ubiquitous-mode t))
+
+
+;; Fix ido-ubiquitous for newer packages
+(defmacro ido-ubiquitous-use-new-completing-read (cmd package)
+  `(eval-after-load ,package
+     '(defadvice ,cmd (around ido-ubiquitous-new activate)
+        (let ((ido-ubiquitous-enable-compatibility nil))
+          ad-do-it))))
+
+(ido-ubiquitous-use-new-completing-read webjump 'webjump)
+(ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
+(ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
+
 
 (require-package 'idomenu)
 
@@ -35,6 +48,17 @@
 
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
+
+(add-hook 'ido-setup-hook
+          (lambda ()
+            ;; Go straight home
+            (define-key ido-file-completion-map
+              (kbd "~")
+              (lambda ()
+                (interactive)
+                (if (looking-back "/")
+                    (insert "~/")
+                  (call-interactively 'self-insert-command))))))
 
 
 (provide 'init-ido)

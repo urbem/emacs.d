@@ -22,4 +22,9 @@
   (after-load 'dired
     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
 
+
+
+
+
+
 (provide 'init-dired)
