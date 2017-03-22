@@ -63,5 +63,9 @@ Symbols matching the text at point are put first in the completion list."
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
 
+
+
+
+
 (provide 'init-func)
 ;;; Init-func.el ends here

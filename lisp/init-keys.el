@@ -10,6 +10,7 @@
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 
+;; spell
 
 
 ;; editing

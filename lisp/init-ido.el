@@ -8,13 +8,13 @@
 (setq-default org-completion-use-ido t)
 (setq-default magit-completing-read-function 'magit-ido-completing-read)
 
-(when (maybe-require-package 'ido-ubiquitous)
-  (ido-ubiquitous-mode t))
+;;(when (maybe-require-package 'ido-ubiquitous)
+;;  (ido-ubiquitous-mode t))
 
 (require-package 'idomenu)
 
 ;; Allow the same buffer to be open in different frames
-(setq ido-default-buffer-method 'selectEd-window)
+(setq ido-default-buffer-method 'selected-window)
 
 ;; http://www.reddit.com/r/emacs/comments/21a4p9/use_recentf_and_ido_together/cgbprem
 (add-hook 'ido-setup-hook (lambda () (define-key ido-completion-map [up] 'previous-history-element)))
@@ -30,6 +30,9 @@
 (require-package 'ido-vertical-mode)
 (ido-vertical-mode)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+
+(add-to-list 'ido-ignore-files "\\.DS_Store")
 
 
 
