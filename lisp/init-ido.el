@@ -8,8 +8,8 @@
 (setq-default org-completion-use-ido t)
 (setq-default magit-completing-read-function 'magit-ido-completing-read)
 
-(when (maybe-require-package 'ido-ubiquitous)
-  (ido-ubiquitous-mode t))
+;;(when (maybe-require-package 'ido-ubiquitous)
+;;  (ido-ubiquitous-mode t))
 
 
 ;; Fix ido-ubiquitous for newer packages
