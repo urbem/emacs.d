@@ -133,7 +133,8 @@
 
 
 
-
+;; remove lock files
+(setq create-lockfiles nil)
 
 
 (provide 'init-utils)
