@@ -137,4 +137,12 @@
 (setq create-lockfiles nil)
 
 
+
+;; template files
+;; template
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")  ;; trailing slash IMPORTANT
+(define-auto-insert "\.py" "python-template.py")
+(setq auto-insert-query nil)
+
 (provide 'init-utils)
