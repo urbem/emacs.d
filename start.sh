@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+
+
 pip install jedi
-# M-x jedi:install-server
 
 
 # locate

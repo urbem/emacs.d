@@ -1,4 +1,6 @@
-(setq auto-save-list-file-prefix "~/.emacs.d/data/auto-save-list/.saves-")
+;; disable auto-save
+
+(setq make-backup-files nil)
 
 (setq org-clock-persist-file "~/.emacs.d/data/org-clock-save.el")
 
