@@ -77,6 +77,18 @@ Symbols matching the text at point are put first in the completion list."
 
 
 
+(defun copy-line (&optional arg)
+  "Do a kill-line but copy rather than kill.  This function directly calls
+    kill-line, so see documentation of kill-line for how to use it including prefix
+    argument and relevant variables.  This function works by temporarily making the
+    buffer read-only."
+  (interactive "P")
+  (let ((buffer-read-only t)
+        (kill-read-only-ok t))
+    (kill-line arg)))
+;; optional key binding
+(global-set-key "\C-c\C-k" 'copy-line)
+
 
 
 

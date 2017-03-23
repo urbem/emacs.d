@@ -7,8 +7,10 @@
 (define-key  global-map  "\C-xm"  'pop-to-mark-command)
 (define-key global-map "\C-xp" 'package-install)
 
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "s-<up>") 'windmove-up)
+(global-set-key (kbd "s-<down>") 'windmove-down)
+(global-set-key (kbd "s-<left>") 'windmove-left)
+(global-set-key (kbd "s-<right>") 'windmove-right)
 
 ;; spell
 
