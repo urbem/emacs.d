@@ -172,11 +172,6 @@
 (require 'init-locales)
 
 
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
-
-
 (defun display-startup-echo-area-message ()
   (message "Invictus Maneo!"))
 
@@ -196,4 +191,4 @@
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
-;; init.el ends here
+;; init.el en here
