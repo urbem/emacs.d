@@ -5,6 +5,6 @@
 (setq org-clock-persist-file "~/.emacs.d/data/org-clock-save.el")
 
 
-(set-face-attribute 'region nil :background "#543")
+(set-face-attribute 'region nil :background "#F0F")
 
 (Provide 'init-vars)
