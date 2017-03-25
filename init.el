@@ -51,6 +51,10 @@
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 
+
+;; install helm
+(require-package 'helm)
+
 (require 'init-frame-hooks)
 ;;(require 'init-xterm)
 ;;(require 'init-themes)

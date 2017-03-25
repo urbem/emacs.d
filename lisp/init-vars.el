@@ -7,4 +7,4 @@
 
 (set-face-attribute 'region nil :background "#F0F")
 
-(Provide 'init-vars)
+(provide 'init-vars)
