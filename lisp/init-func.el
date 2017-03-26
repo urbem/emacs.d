@@ -90,6 +90,21 @@ Symbols matching the text at point are put first in the completion list."
 (global-set-key "\C-c\C-k" 'copy-line)
 
 
+(defun copy-string ()
+  "Copy a string in double quote."
+  (interactive)
+  (let ((point-start (search-forward "\""))
+        (point-end (search-forward "\""))
+        )
+    (message "start: %s, end:%s" point-start point-end)
+    (copy-region-as-kill point-start (- point-end 1))
+    )
+  )
+
+
+
+
+
 
 
 
