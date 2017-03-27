@@ -145,4 +145,10 @@
 (define-auto-insert "\.py" "python-template.py")
 (setq auto-insert-query nil)
 
+
+;; auto save
+;;(require-package 'real-auto-save)
+;;(add-hook 'prog-mode-hook 'real-auto-save-mode)
+
+
 (provide 'init-utils)
