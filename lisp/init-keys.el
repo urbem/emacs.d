@@ -37,8 +37,14 @@
 
 
 ;; ido
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+
+
+;; helm
+(global-set-key (kbd "C-c C-i") 'helm-imenu)
+(global-set-key (kbd "C-c h l") 'helm-locate)
+(global-set-key (kbd "C-c h r") 'helm-recentf)
+(global-set-key (kbd "C-c h b") 'helm-bookmarks)
 
 
 

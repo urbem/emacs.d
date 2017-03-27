@@ -150,6 +150,7 @@
 
 
 (require 'init-keys)
+(require 'init-helm)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacs-client

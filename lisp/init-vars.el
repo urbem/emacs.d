@@ -8,7 +8,7 @@
 (setq auto-save-visited-file-name t)
 (set-face-attribute 'region nil :background "#F0F")
 
-
+(setq bookmark-save-flag 1)
 
 (setq find-function-C-source-directory "~/Projects/emacs-25.1/src/")
 
