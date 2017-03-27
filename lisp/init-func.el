@@ -102,6 +102,19 @@ Symbols matching the text at point are put first in the completion list."
   )
 
 
+(defun copy-token ()
+  "Copy a token."
+  (interactive)
+  (let ((point-start (point))
+        (point-end (search-forward " "))
+        )
+    (message "length: %d" (- point-end  point-start))
+    (copy-region-as-kill point-start (- point-end 1))
+
+    )
+  )
+
+
 
 
 

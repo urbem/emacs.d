@@ -8,4 +8,8 @@
 (setq auto-save-visited-file-name t)
 (set-face-attribute 'region nil :background "#F0F")
 
+
+
+(setq find-function-C-source-directory "~/Projects/emacs-25.1/src/")
+
 (provide 'init-vars)

@@ -24,6 +24,7 @@
 (global-set-key (kbd "s-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 (global-set-key (kbd "C-c C-s") 'copy-string)
+(global-set-key (kbd "C-c C-t") 'copy-token)
 (global-set-key "\C-cy" '(lambda ()
                            (interactive)
                            (popup-menu 'yank-menu)))
