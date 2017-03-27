@@ -55,6 +55,7 @@
 ;; install some packages...
 (require-package 'helm)
 (require-package 'py-autopep8)
+(require-package 'ecb)
 
 
 (require 'init-frame-hooks)
