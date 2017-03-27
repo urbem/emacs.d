@@ -12,4 +12,9 @@
 
 (setq find-function-C-source-directory "~/Projects/emacs-25.1/src/")
 
+
+
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
 (provide 'init-vars)

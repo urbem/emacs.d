@@ -146,6 +146,37 @@
 (setq auto-insert-query nil)
 
 
+;; tempbuf
+(when (require 'tempbuf nil 'noerror)
+  (add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'w3-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'Man-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'compilation-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'help-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+  (add-hook 'view-mode-hook 'turn-on-tempbuf-mode))
+
+
+(require 'cl)
+(defun bk-kill-buffers (regexp)
+  "Kill buffers matching REGEXP without asking for confirmation."
+  (interactive "sKill buffers matching this regular expression: ")
+  (flet ((kill-buffer-ask (buffer) (kill-buffer buffer)))
+    (kill-matching-buffers regexp)))
+
+(add-hook 'tempbuf-mode-hook
+          (lambda ()
+            (bk-kill-buffers "\\*[Hh]elm.*\\*")
+            (bk-kill-buffers "\\*Compile-Log\\*")
+            (bk-kill-buffers "\\*WoMan-Log\\*")
+            (bk-kill-buffers "\\*markdown-output\\*")
+            (bk-kill-buffers "\\*Flycheck-error-messages\\*")
+            (bk-kill-buffers "\\*Shell.*Command.*Output.*\*")
+            (bk-kill-buffers "\\*clang-output\\*")
+            (bk-kill-buffers "\\*clang-error\\*")
+            (bk-kill-buffers "\\*cscope.*\\*")))
+
+
 ;; auto save
 ;;(require-package 'real-auto-save)
 ;;(add-hook 'prog-mode-hook 'real-auto-save-mode)
