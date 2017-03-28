@@ -6,7 +6,7 @@
 
 (setq auto-save-interval 20)
 (setq auto-save-visited-file-name t)
-(set-face-attribute 'region nil :background "#F0F")
+;;(set-face-attribute 'region nil :background "#00F")
 
 (setq bookmark-save-flag 1)
 

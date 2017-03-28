@@ -83,7 +83,7 @@
 
 
 ;; hightlight current line
-(global-hl-line-mode 1)
+;;(global-hl-line-mode 1)
 
 
 
