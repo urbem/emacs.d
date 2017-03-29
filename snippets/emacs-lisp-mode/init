@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: init
+# key: ;;;
+# --
+;;; $1 -- $2
+;;; Commentary:
+;; Copyright (C) 2017  Hang Yan
+;; Author: Hang Yan <hangyan@hotmail.com>
+
+;;; Code:
+
+$3
+
+(provide '$1)
+;;; $1.el ends here

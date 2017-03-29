@@ -73,6 +73,7 @@ Symbols matching the text at point are put first in the completion list."
 
 ;; remote edit example
 (defun connect-azure ()
+  "Example settings for remote edit."
   (interactive)
   (dired "/alauda@139.217.3.183:/home/alauda/"))
 

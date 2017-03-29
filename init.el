@@ -193,5 +193,9 @@
 (require-package 'material-theme)
 (load-theme 'material t)
 
+
+;; after
+(require 'init-final)
+
 (provide 'init)
 ;;; init.el ends here
