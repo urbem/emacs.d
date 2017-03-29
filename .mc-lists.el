@@ -3,6 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        indent-for-tab-command
+        ivy-switch-buffer
         mouse-set-region
         smex
         ))
