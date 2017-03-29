@@ -15,7 +15,9 @@
 ;; dump-jump
 (require-package 'dumb-jump)
 
-
+;; fixmee
+;;(require-package 'fixmee)
+;;(global-fixmee-mode)
 
 (provide 'init-final)
 ;;; init-final.el ends here
