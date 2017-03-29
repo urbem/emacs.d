@@ -9,6 +9,8 @@
     (apply orig-fun args)))
 (advice-add 'display-buffer-at-bottom :around #'display-buffer-at-bottom--display-buffer-at-bottom-around)
 
+(setq ecb-tip-of-the-day nil)
+
 (global-set-key (kbd "C-c b a") 'ecb-activate)
 (global-set-key (kbd "C-c b d") 'ecb-deactivate)
 

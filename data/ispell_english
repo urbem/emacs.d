@@ -4,9 +4,13 @@ config
 elisp
 haproxy
 init
+ip
 json
 kubernetes
 localhost
+macvlan
+merge
+sh
 usr
 yaml
 zab

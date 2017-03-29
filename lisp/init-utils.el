@@ -174,6 +174,8 @@
             (bk-kill-buffers "\\*Shell.*Command.*Output.*\*")
             (bk-kill-buffers "\\*clang-output\\*")
             (bk-kill-buffers "\\*clang-error\\*")
+            (bk-kill-buffers "tetris-scores")
+            (bk-kill-buffers "\\*Tetris\\*")
             (bk-kill-buffers "\\*cscope.*\\*")))
 
 
