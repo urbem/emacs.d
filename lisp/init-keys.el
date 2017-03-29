@@ -23,10 +23,11 @@
                   (join-line -1)))
 (global-set-key (kbd "s-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
-(global-set-key (kbd "C-c C-s") 'copy-in-pair)
-(global-set-key "\C-cy" '(lambda ()
-                           (interactive)
-                           (popup-menu 'yank-menu)))
+(global-set-key (kbd "C-c C-p") 'copy-in-pair)
+(global-set-key "\C-cy"
+                '(lambda ()
+                   (interactive)
+                   (popup-menu 'yank-menu)))
 
 
 ;; M-x

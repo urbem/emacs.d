@@ -3,8 +3,7 @@
   (defmacro after-load (feature &rest body)
     "After FEATURE is loaded, evaluate BODY."
     (declare (indent defun))
-    `(eval-after-load ,feature
-       '(progn ,@body))))
+    `(eval-after-load ,feature '(progn ,@body))))
 
 
 ;;----------------------------------------------------------------------------
@@ -23,11 +22,11 @@
   "Find all matches for `REGEX' within `STR', returning the full match string or group `GROUP'."
   (let ((result nil)
         (pos 0)
-        (group (or group 0)))
+        (group (or group
+                   0)))
     (while (string-match regex str pos)
       (push (match-string group str) result)
-      (setq pos (match-end group)))
-    result))
+      (setq pos (match-end group))) result))
 
 
 ;;----------------------------------------------------------------------------
@@ -36,9 +35,10 @@
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
-  (or (buffer-file-name) (error "No file is currently being edited"))
-  (when (yes-or-no-p (format "Really delete '%s'?"
-                             (file-name-nondirectory buffer-file-name)))
+  (or (buffer-file-name)
+      (error
+       "No file is currently being edited"))
+  (when (yes-or-no-p (format "Really delete '%s'?" (file-name-nondirectory buffer-file-name)))
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
@@ -52,12 +52,13 @@
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
     (unless filename
-      (error "Buffer '%s' is not visiting a file!" name))
-    (progn
-      (when (file-exists-p filename)
-        (rename-file filename new-name 1))
-      (set-visited-file-name new-name)
-      (rename-buffer new-name))))
+      (error
+       "Buffer '%s' is not visiting a file!"
+       name))
+    (progn (when (file-exists-p filename)
+             (rename-file filename new-name 1))
+           (set-visited-file-name new-name)
+           (rename-buffer new-name))))
 
 ;;----------------------------------------------------------------------------
 ;; Browse current HTML file
@@ -68,23 +69,20 @@
   (let ((file-name (buffer-file-name)))
     (if (and (fboundp 'tramp-tramp-file-p)
              (tramp-tramp-file-p file-name))
-        (error "Cannot open tramp file")
+        (error
+         "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
 
 ;; Making scripts executable on save
-(add-hook 'after-save-hook
-          #'(lambda ()
-              (and (save-excursion
-                     (save-restriction
-                       (widen)
-                       (goto-char (point-min))
-                       (save-match-data
-                         (looking-at "^#!"))))
-                   (not (file-executable-p buffer-file-name))
-                   (shell-command (concat "chmod u+x " (shell-quote-argument buffer-file-name)))
-                   (message
-                    (concat "Saved as script: " buffer-file-name)))))
+(add-hook 'after-save-hook #
+          '(lambda ()
+             (and (save-excursion (save-restriction (widen)
+                                                    (goto-char (point-min))
+                                                    (save-match-data (looking-at "^#!"))))
+                  (not (file-executable-p buffer-file-name))
+                  (shell-command (concat "chmod u+x " (shell-quote-argument buffer-file-name)))
+                  (message (concat "Saved as script: " buffer-file-name)))))
 
 
 ;; web jump
@@ -92,13 +90,10 @@
 (global-set-key (kbd "C-x j") 'webjump)
 
 ;; Add Urban Dictionary to webjump
-(eval-after-load "webjump"
-  '(add-to-list 'webjump-sites
-                '("Urban Dictionary" .
-                  [simple-query
-                   "www.urbandictionary.com"
-                   "http://www.urbandictionary.com/define.php?term="
-                   ""])))
+(eval-after-load "webjump" '(add-to-list 'webjump-sites '("Urban Dictionary" . [simple-query
+                                                                                "www.urbandictionary.com"
+                                                                                "http://www.urbandictionary.com/define.php?term="
+                                                                                ""])))
 
 
 
@@ -108,7 +103,8 @@
   (let ((filename (buffer-file-name))
         (buffer (current-buffer))
         (name (buffer-name)))
-    (if (not (and filename (file-exists-p filename)))
+    (if (not (and filename
+                  (file-exists-p filename)))
         (ido-kill-buffer)
       (when (yes-or-no-p "Are you sure you want to remove this file? ")
         (delete-file filename)
@@ -121,7 +117,8 @@
   (let ((filename (buffer-file-name))
         (buffer (current-buffer))
         (name (buffer-name)))
-    (if (not (and filename (file-exists-p filename)))
+    (if (not (and filename
+                  (file-exists-p filename)))
         (ido-kill-buffer)
       (when (yes-or-no-p "Are you sure you want to remove this file? ")
         (delete-file filename)
@@ -141,13 +138,14 @@
 ;; template files
 ;; template
 (auto-insert-mode)
-(setq auto-insert-directory "~/.emacs.d/templates/")  ;; trailing slash IMPORTANT
+(setq auto-insert-directory "~/.emacs.d/templates/") ;; trailing slash IMPORTANT
 (define-auto-insert "\.py" "python-template.py")
 (setq auto-insert-query nil)
 
 
 ;; tempbuf
-(when (require 'tempbuf nil 'noerror)
+(when
+    (require 'tempbuf nil 'noerror)
   (add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
   (add-hook 'w3-mode-hook 'turn-on-tempbuf-mode)
   (add-hook 'Man-mode-hook 'turn-on-tempbuf-mode)
@@ -161,7 +159,8 @@
 (defun bk-kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
-  (flet ((kill-buffer-ask (buffer) (kill-buffer buffer)))
+  (flet ((kill-buffer-ask (buffer)
+                          (kill-buffer buffer)))
     (kill-matching-buffers regexp)))
 
 (add-hook 'tempbuf-mode-hook
@@ -183,5 +182,9 @@
 ;;(require-package 'real-auto-save)
 ;;(add-hook 'prog-mode-hook 'real-auto-save-mode)
 
+
+;; fixme. todo..
+(require-package 'fixmee)
+(global-fixmee-mode)
 
 (provide 'init-utils)
