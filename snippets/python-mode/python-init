@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: python-init
+# key: #!
+# --
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+$1
+
+__author__ = 'Hang Yan'
