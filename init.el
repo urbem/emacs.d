@@ -2,11 +2,14 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
-(let ((minver "23.3"))
-  (when (version<= emacs-version minver)
-    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
-(when (version<= emacs-version "24")
-  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+(let ((minver "23.3")) 
+  (when (version<= emacs-version minver) 
+    (error 
+     "Your Emacs is too old -- this config requires v%s or higher"
+     minver)))
+(when (version<= emacs-version "24") 
+  (message
+   "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
@@ -17,11 +20,12 @@
 ;;----------------------------------------------------------------------------
 ;; Temporarily reduce garbage collection during startup
 ;;----------------------------------------------------------------------------
-(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
+(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold 
   "Initial value of `gc-cons-threshold' at start-up time.")
 (setq gc-cons-threshold (* 128 1024 1024))
-(add-hook 'after-init-hook
-          (lambda () (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
+(add-hook 'after-init-hook 
+          (lambda () 
+            (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
@@ -31,7 +35,7 @@
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Calls (package-initialize)
-(require 'init-elpa)      ;; Machinery for installing required packages
+(require 'init-elpa) ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 (require 'init-func)
 
@@ -110,7 +114,7 @@
 (require 'init-haml)
 (require 'init-python-mode)
 (require 'init-golang-mode)
-(unless (version<= emacs-version "24.3")
+(unless (version<= emacs-version "24.3") 
   (require 'init-haskell))
 (require 'init-elm)
 (require 'init-ruby-mode)
@@ -120,12 +124,12 @@
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(unless (version<= emacs-version "24.2")
-  (require 'init-clojure)
+(unless (version<= emacs-version "24.2") 
+  (require 'init-clojure) 
   (require 'init-clojure-cider))
 (require 'init-common-lisp)
 
-(when *spell-check-support-enabled*
+(when *spell-check-support-enabled* 
   (require 'init-spelling))
 
 (require 'init-misc)
@@ -144,8 +148,7 @@
 (require-package 'lua-mode)
 (require-package 'htmlize)
 (require-package 'dsvn)
-(when *is-a-mac*
-  (require-package 'osx-location))
+(when *is-a-mac* (require-package 'osx-location))
 (require-package 'regex-tool)
 
 
@@ -156,14 +159,14 @@
 ;; Allow access from emacs-client
 ;;----------------------------------------------------------------------------
 (require 'server)
-(unless (server-running-p)
+(unless (server-running-p) 
   (server-start))
 
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
-(when (file-exists-p custom-file)
+(when (file-exists-p custom-file) 
   (load custom-file))
 
 (require 'init-vars)
@@ -180,7 +183,8 @@
 (require 'init-locales)
 
 
-(defun display-startup-echo-area-message ()
+(defun display-startup-echo-area-message () 
+  "Customize hello message in minibuf."
   (message "Invictus Maneo!"))
 
 
@@ -190,18 +194,4 @@
 (load-theme 'material t)
 
 (provide 'init)
-
-
-
-
-
-
-
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t
-;; init.el en here
-
-
-;; Added by Kite
-;;(load-file "~/.emacs.d/kite.el")
+;;; init.el ends here
