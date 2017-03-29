@@ -200,3 +200,7 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; init.el en here
+
+
+;; Added by Kite
+(load-file "~/.emacs.d/kite.el")
