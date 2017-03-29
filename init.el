@@ -184,6 +184,7 @@
   (message "Invictus Maneo!"))
 
 
+
 ;; load one theme
 (require-package 'material-theme)
 (load-theme 'material t)
@@ -203,4 +204,4 @@
 
 
 ;; Added by Kite
-(load-file "~/.emacs.d/kite.el")
+;;(load-file "~/.emacs.d/kite.el")
