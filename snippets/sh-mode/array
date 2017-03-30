@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: shell-array
+# key: arr
+# --
+declare -a arr=('$1')
+for i in "\${arr[@]\}"; do
+    $2
+done
