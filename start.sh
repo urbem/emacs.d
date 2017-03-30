@@ -10,3 +10,6 @@ test -f /var/db/locate.database || sudo launchctl load -w /System/Library/Launch
 
 # brew
 brew install shellcheck ispell
+
+
+mkdir  ~/.virtualenvs

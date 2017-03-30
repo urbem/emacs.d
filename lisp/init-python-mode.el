@@ -21,7 +21,26 @@
 (require-package 'pytest)
 (add-hook 'python-mode-hook 
           (lambda () 
-            (local-set-key (kbd "C-c C-t") 'pytest-one)))
+            (local-set-key (kbd "C-c C-t") 'pytest-one) 
+            (venv-workon (projectile-project-name))))
+
+
+;; virtualenv
+(require-package 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+
+(setq projectile-switch-project-action 
+      '(lambda () 
+         (venv-projectile-auto-workon) 
+         (projectile-find-file)))
+
+(setq-default mode-line-format (cons 
+                                '(:exec venv-current-name)
+                                mode-line-format))
+
+
+
 
 
 
