@@ -65,7 +65,8 @@ save, so we it's ok to move to the first import line."
                (venv-workon target-env-name) 
                (setq venv-current-name target-env-name) 
                (message "Checkout virtualenv: %s" target-env-name)) 
-      (message "No virtualenv found for project: [%s]!" target-env-name))))
+      (progn (when (not (string= target-env-name "-")) 
+               (message "No virtualenv found for project: [%s]!" target-env-name))))))
 
 
 (defun venv-create-for-project () 
