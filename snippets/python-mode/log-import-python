@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: log-import-python
+# key: il
+# --
+import logging
