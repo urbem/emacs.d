@@ -40,11 +40,56 @@ save, so we it's ok to move to the first import line."
 
 ;; python test
 (require-package 'pytest)
+
+
+
+
+;; ugly hack to disable flake8 checks if flake8 not working well
+(defun process-exit-code-and-output (program &rest args) 
+  "Run PROGRAM with ARGS and return the exit code and output in a list."
+  (with-temp-buffer (list (apply 'call-process program nil (current-buffer) nil args) 
+                          (buffer-string))))
+
+(with-eval-after-load 'flycheck (when (> (car (process-exit-code-and-output "flake8")) 0) 
+                                  (setq-default flycheck-disabled-checkers '(python-flake8))))
+
+
+
+(defun venv-checkout-if-exist () 
+  "Use virtualenv if present." 
+  (interactive) 
+  (let ((venvs (venv-get-candidates)) 
+        (target-env-name (projectile-project-name))) 
+    (if (member target-env-name venvs) 
+        (progn (venv-deactivate) 
+               (venv-workon target-env-name) 
+               (setq venv-current-name target-env-name) 
+               (message "Checkout virtualenv: %s" target-env-name)) 
+      (message "No virtualenv found for project: [%s]!" target-env-name))))
+
+
+(defun venv-create-for-project () 
+  "Create virtualenv for this project." 
+  (interactive) 
+  (let ((target-env-name (projectile-project-name))) 
+    (let ((cmd (concat "virtualenv --system-site-packages ~/.virtualenvs/" target-env-name))) 
+      (message "Running command: %s" cmd) 
+      (shell-command (concat cmd " &")))))
+
+(defun venv-install-package (package-name) 
+  "Install a python package who's name is PACKAGE-NAME." 
+  (interactive "sPackage name:") 
+  (let ((venv-dir (concat "~/.virtualenvs/" (projectile-project-name)))) 
+    (shell-command (concat (concat (concat (concat "source " venv-dir)
+                                           "/bin/activate && pip install ") package-name) " &"))))
+
+
+
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
             (local-set-key (kbd "C-c g i") 'py-goto-imports) 
-            (venv-workon (projectile-project-name))))
+            (venv-checkout-if-exist)))
 
 
 ;; virtualenv
@@ -60,11 +105,6 @@ save, so we it's ok to move to the first import line."
 (setq-default mode-line-format (cons 
                                 '(:exec venv-current-name)
                                 mode-line-format))
-
-
-
-
-
 
 
 

@@ -14,3 +14,7 @@ done
 
 brew install shellcheck ispell
 sudo pip install jedi autopep8 flake8 isort
+
+
+# if flycheck has configparser import error, try uninstall it and install again
+# sudo pip uninstall configparser && pip install configparser
