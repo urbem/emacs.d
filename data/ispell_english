@@ -1,5 +1,6 @@
 alb
 arr
+attr
 aws
 conf
 config
@@ -16,11 +17,15 @@ kubernetes
 localhost
 macvlan
 merge
+mesos
 metadata
+namedtuple
 sange
 scheduler
 sh
+str
 sven
+username
 usr
 utf
 virtualenvs
