@@ -85,6 +85,18 @@ save, so we it's ok to move to the first import line."
                                            "/bin/activate && pip install ") package-name) " &"))))
 
 
+(defun venv-install-requirements () 
+  "Install packages in the current requirements file." 
+  (interactive) 
+  (let ((venv-dir (concat "~/.virtualenvs/" (projectile-project-name)))) 
+    (shell-command (concat (concat (concat (concat "source " venv-dir)
+                                           "/bin/activate && pip install -r ") 
+                                   (buffer-file-name)) " &"))))
+
+
+
+
+
 
 (add-hook 'python-mode-hook 
           (lambda () 
@@ -107,6 +119,12 @@ save, so we it's ok to move to the first import line."
                                 '(:exec venv-current-name)
                                 mode-line-format))
 
+
+;; venv improvement: unset variable, and deactivate maybe?
+
+;; (add-hook 'switch-buffer-functions
+;;           (lambda (pre cur)
+;;             (message "%S -> %S" pre cur)))
 
 
 (provide 'init-python-mode)

@@ -104,4 +104,9 @@
 (modify-all-frames-parameters (list (cons 'cursor-type 'bar)))
 
 
+;; buffer hightlight
+(set-face-attribute 'mode-line-buffer-id nil
+                    :foreground "green")
+
+
 (provide 'init-gui-frames)

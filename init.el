@@ -185,7 +185,7 @@
 
 (defun display-startup-echo-area-message () 
   "Customize hello message in minibuf."
-  (message "Invictus Maneo!"))
+  (message "Emacs started!"))
 
 
 
