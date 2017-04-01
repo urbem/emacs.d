@@ -190,8 +190,10 @@
 
 
 ;; load one theme
-(require-package 'material-theme)
-(load-theme 'material t)
+;;(require-package 'material-theme)
+;;(load-theme 'material t)
+;;(require-package 'misterioso)
+(load-theme 'misterioso)
 
 
 ;; after

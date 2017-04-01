@@ -102,6 +102,7 @@
 ;; ruler
 (add-hook 'prog-mode-hook 'ruler-mode)
 (modify-all-frames-parameters (list (cons 'cursor-type 'bar)))
+(set-cursor-color "green")
 
 
 ;; buffer hightlight
