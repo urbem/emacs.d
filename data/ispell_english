@@ -13,6 +13,7 @@ cidr
 conf
 config
 cpus
+defun
 dict
 elisp
 env

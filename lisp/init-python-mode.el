@@ -73,6 +73,8 @@ save, so we it's ok to move to the first import line."
                (message "No virtualenv found for project: [%s]!" target-env-name))))))
 
 
+
+
 (defun venv-create-for-project () 
   "Create virtualenv for this project." 
   (interactive) 
@@ -80,6 +82,28 @@ save, so we it's ok to move to the first import line."
     (let ((cmd (concat "virtualenv --system-site-packages ~/.virtualenvs/" target-env-name))) 
       (message "Running command: %s" cmd) 
       (shell-command (concat cmd " &")))))
+
+
+
+;; dumb search
+(defun py-dumb-find () 
+  "Dumb search in virtualenv." 
+  (interactive) 
+  (let ((word) 
+        (dir)) 
+    (setq word (thing-at-point 'word 'no-properties)) 
+    (setq dir (concat (concat "~/.virtualenvs/" (projectile-project-name))
+                      "/lib/python2.7/site-packages/")) 
+    (setq output (shell-command-to-string (format
+                                           "grep -r --include='*.py' -nw %s -R %s | egrep 'defun|class' &"
+                                           word dir))) 
+    (setq dest (split-string output ":")) 
+    (find-file-read-only (car dest)) 
+    (goto-line (string-to-number (car (cdr dest))))))
+
+
+
+
 
 (defun venv-install-package (package-name) 
   "Install a python package who's name is PACKAGE-NAME." 
