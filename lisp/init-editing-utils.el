@@ -23,8 +23,7 @@
 (transient-mark-mode t)
 
 
- ;;;
-A simple visible bell which works in all terminal types
+;;; A simple visible bell which works in all terminal types
 
 (defun sanityinc/flash-mode-line () 
   (invert-face 'mode-line) 
