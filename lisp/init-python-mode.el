@@ -95,7 +95,7 @@ save, so we it's ok to move to the first import line."
     (setq dir (concat (concat "~/.virtualenvs/" (projectile-project-name))
                       "/lib/python2.7/site-packages/")) 
     (setq output (shell-command-to-string (format
-                                           "grep -r --include='*.py' -nw %s -R %s | egrep 'defun|class' &"
+                                           "grep -r --include='*.py' -nw %s -R %s | egrep ^'defun|class' &"
                                            word dir))) 
     (setq dest (split-string output ":")) 
     (find-file-read-only (car dest)) 
