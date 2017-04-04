@@ -64,13 +64,11 @@ save, so we it's ok to move to the first import line."
   (interactive) 
   (let ((venvs (venv-get-candidates)) 
         (target-env-name (projectile-project-name))) 
-    (if (member target-env-name venvs) 
-        (progn (venv-deactivate) 
-               (venv-workon target-env-name) 
-               (setq venv-current-name target-env-name) 
-               (message "Checkout virtualenv: %s" target-env-name)) 
-      (progn (when (not (string= target-env-name "-")) 
-               (message "No virtualenv found for project: [%s]!" target-env-name))))))
+    (when (member target-env-name venvs) 
+      (progn (venv-deactivate) 
+             (venv-workon target-env-name) 
+             (setq venv-current-name target-env-name) 
+             (message "Checkout virtualenv: %s" target-env-name)))))
 
 
 
@@ -123,12 +121,10 @@ save, so we it's ok to move to the first import line."
 
 
 
-
-
-
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
+            (local-set-key (kbd "C-c C-d") 'py-dumb-find) 
             (local-set-key (kbd "C-c C-g") 'py-goto-imports) 
             (local-set-key (kbd "C-c d b") 'python-nav--beginning-of-defun) 
             (venv-checkout-if-exist)))

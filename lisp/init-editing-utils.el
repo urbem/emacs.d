@@ -1,57 +1,46 @@
 (require-package 'unfill)
 
-(when (fboundp 'electric-pair-mode)
+(when (fboundp 'electric-pair-mode) 
   (electric-pair-mode))
-(when (eval-when-compile (version< "24.4" emacs-version))
+(when (eval-when-compile (version< "24.4" emacs-version)) 
   (electric-indent-mode 1))
 
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
-(setq-default
- blink-cursor-interval 0.4
- bookmark-default-file "~/.emacs.d/data/bookmark"
- buffers-menu-max-size 30
- case-fold-search t
- column-number-mode t
- delete-selection-mode t
- ediff-split-window-function 'split-window-horizontally
- ediff-window-setup-function 'ediff-setup-windows-plain
- indent-tabs-mode nil
- make-backup-files nil
- mouse-yank-at-point t
- save-interprogram-paste-before-kill t
- scroll-preserve-screen-position 'always
- set-mark-command-repeat-pop t
- tooltip-delay 1.5
- truncate-lines nil
- truncate-partial-width-windows nil)
+(setq-default blink-cursor-interval 0.4 bookmark-default-file "~/.emacs.d/data/bookmark"
+              buffers-menu-max-size 30 case-fold-search t column-number-mode t delete-selection-mode
+              t ediff-split-window-function 'split-window-horizontally ediff-window-setup-function
+              'ediff-setup-windows-plain indent-tabs-mode nil make-backup-files nil
+              mouse-yank-at-point t save-interprogram-paste-before-kill t
+              scroll-preserve-screen-position 'always set-mark-command-repeat-pop t tooltip-delay
+              1.5 truncate-lines nil truncate-partial-width-windows nil)
 
 (global-auto-revert-mode)
-(setq global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+(setq global-auto-revert-non-file-buffers t auto-revert-verbose nil)
 
 (transient-mark-mode t)
 
 
- ;;; A simple visible bell which works in all terminal types
+ ;;;
+A simple visible bell which works in all terminal types
 
-(defun sanityinc/flash-mode-line ()
-  (invert-face 'mode-line)
+(defun sanityinc/flash-mode-line () 
+  (invert-face 'mode-line) 
   (run-with-timer 0.05 nil 'invert-face 'mode-line))
 
-(setq-default
- ring-bell-function 'sanityinc/flash-mode-line)
+(setq-default ring-bell-function 'sanityinc/flash-mode-line)
 
 
 
 ;;; Newline behaviour
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-(defun sanityinc/newline-at-end-of-line ()
-  "Move to end of line, enter a newline, and reindent."
-  (interactive)
-  (move-end-of-line 1)
+(defun sanityinc/newline-at-end-of-line () 
+  "Move to end of line, enter a newline, and reindent." 
+  (interactive) 
+  (move-end-of-line 1) 
   (newline-and-indent))
 
 (global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
@@ -60,27 +49,25 @@
 
 (when (eval-when-compile (string< "24.3.1" emacs-version))
   ;; https://github.com/purcell/emacs.d/issues/138
-  (after-load 'subword
-    (diminish 'subword-mode)))
+  (after-load 'subword (diminish 'subword-mode)))
 
 
 
-(when (maybe-require-package 'indent-guide)
-  (add-hook 'prog-mode-hook 'indent-guide-mode)
-  (after-load 'indent-guide
-    (diminish 'indent-guide-mode)))
+(when (maybe-require-package 'indent-guide) 
+  (add-hook 'prog-mode-hook 'indent-guide-mode) 
+  (after-load 'indent-guide (diminish 'indent-guide-mode)))
 
 
 
 (require-package 'nlinum)
 
 
-(when (require-package 'rainbow-delimiters)
+(when (require-package 'rainbow-delimiters) 
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 
 
-(when (fboundp 'global-prettify-symbols-mode)
+(when (fboundp 'global-prettify-symbols-mode) 
   (global-prettify-symbols-mode))
 
 
@@ -90,17 +77,16 @@
 
 
 (require-package 'highlight-symbol)
-(dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
-  (add-hook hook 'highlight-symbol-mode)
+(dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook)) 
+  (add-hook hook 'highlight-symbol-mode) 
   (add-hook hook 'highlight-symbol-nav-mode))
 (add-hook 'org-mode-hook 'highlight-symbol-nav-mode)
-(after-load 'highlight-symbol
-  (diminish 'highlight-symbol-mode)
-  (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
-    "Suppress symbol highlighting while isearching."
-    (unless (or isearch-mode
-                (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
-      ad-do-it)))
+(after-load 'highlight-symbol (diminish 'highlight-symbol-mode) 
+            (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate) 
+              "Suppress symbol highlighting while isearching."
+              (unless (or isearch-mode 
+                          (and (boundp 'multiple-cursors-mode) 
+                               multiple-cursors-mode)) ad-do-it)))
 
 ;;----------------------------------------------------------------------------
 ;; Zap *up* to char is a handy pair for zap-to-char
@@ -113,12 +99,11 @@
 (require-package 'browse-kill-ring)
 (setq browse-kill-ring-separator "\f")
 (global-set-key (kbd "M-Y") 'browse-kill-ring)
-(after-load 'browse-kill-ring
-  (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit)
-  (define-key browse-kill-ring-mode-map (kbd "M-n") 'browse-kill-ring-forward)
-  (define-key browse-kill-ring-mode-map (kbd "M-p") 'browse-kill-ring-previous))
-(after-load 'page-break-lines
-  (push 'browse-kill-ring-mode page-break-lines-modes))
+(after-load 'browse-kill-ring (define-key browse-kill-ring-mode-map (kbd "C-g")
+                                'browse-kill-ring-quit) 
+            (define-key browse-kill-ring-mode-map (kbd "M-n") 'browse-kill-ring-forward) 
+            (define-key browse-kill-ring-mode-map (kbd "M-p") 'browse-kill-ring-previous))
+(after-load 'page-break-lines (push 'browse-kill-ring-mode page-break-lines-modes))
 
 
 ;;----------------------------------------------------------------------------
@@ -157,7 +142,7 @@
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
 
-(when (maybe-require-package 'avy)
+(when (maybe-require-package 'avy) 
   (global-set-key (kbd "C-;") 'avy-goto-word-or-subword-1))
 
 (require-package 'multiple-cursors)
@@ -179,11 +164,11 @@
 
 
 
-(defun kill-back-to-indentation ()
-  "Kill from point back to the first non-whitespace character on the line."
-  (interactive)
-  (let ((prev-pos (point)))
-    (back-to-indentation)
+(defun kill-back-to-indentation () 
+  "Kill from point back to the first non-whitespace character on the line." 
+  (interactive) 
+  (let ((prev-pos (point))) 
+    (back-to-indentation) 
     (kill-region (point) prev-pos)))
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
@@ -213,13 +198,13 @@
 ;;----------------------------------------------------------------------------
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
 ;;----------------------------------------------------------------------------
-(defun backward-up-sexp (arg)
-  "Jump up to the start of the ARG'th enclosing sexp."
-  (interactive "p")
-  (let ((ppss (syntax-ppss)))
-    (cond ((elt ppss 3)
-           (goto-char (elt ppss 8))
-           (backward-up-sexp (1- arg)))
+(defun backward-up-sexp (arg) 
+  "Jump up to the start of the ARG'th enclosing sexp." 
+  (interactive "p") 
+  (let ((ppss (syntax-ppss))) 
+    (cond ((elt ppss 3) 
+           (goto-char (elt ppss 8)) 
+           (backward-up-sexp (1- arg))) 
           ((backward-up-list arg)))))
 
 (global-set-key [remap backward-up-list] 'backward-up-sexp) ; C-M-u, C-M-up
@@ -233,52 +218,52 @@
 (diminish 'whole-line-or-region-mode)
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
-(defun suspend-mode-during-cua-rect-selection (mode-name)
+(defun suspend-mode-during-cua-rect-selection (mode-name) 
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
-  (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
-        (advice-name (intern (format "suspend-%s" mode-name))))
-    (eval-after-load 'cua-rect
-      `(progn
-         (defvar ,flagvar nil)
-         (make-variable-buffer-local ',flagvar)
-         (defadvice cua--activate-rectangle (after ,advice-name activate)
-           (setq ,flagvar (and (boundp ',mode-name) ,mode-name))
-           (when ,flagvar
-             (,mode-name 0)))
-         (defadvice cua--deactivate-rectangle (after ,advice-name activate)
-           (when ,flagvar
-             (,mode-name 1)))))))
+  (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name))) 
+        (advice-name (intern (format "suspend-%s" mode-name)))) 
+    (eval-after-load 'cua-rect `(progn 
+                                  (defvar ,flagvar nil) 
+                                  (make-variable-buffer-local ',flagvar) 
+                                  (defadvice cua--activate-rectangle (after ,advice-name activate) 
+                                    (setq ,flagvar (and (boundp ',mode-name) 
+                                                        ,mode-name)) 
+                                    (when ,flagvar (,mode-name 0))) 
+                                  (defadvice cua--deactivate-rectangle (after ,advice-name activate) 
+                                    (when ,flagvar (,mode-name 1)))))))
 
 (suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
 
 
 
 
-(defun sanityinc/open-line-with-reindent (n)
+(defun sanityinc/open-line-with-reindent (n) 
   "A version of `open-line' which reindents the start and end positions.
 If there is a fill prefix and/or a `left-margin', insert them
 on the new line if the line would have been blank.
-With arg N, insert N newlines."
-  (interactive "*p")
-  (let* ((do-fill-prefix (and fill-prefix (bolp)))
-	 (do-left-margin (and (bolp) (> (current-left-margin) 0)))
-	 (loc (point-marker))
+With arg N, insert N newlines." 
+  (interactive "*p") 
+  (let* ((do-fill-prefix (and fill-prefix 
+                              (bolp))) 
+         (do-left-margin (and (bolp) 
+                              (> (current-left-margin) 0))) 
+         (loc (point-marker))
 	 ;; Don't expand an abbrev before point.
-	 (abbrev-mode nil))
-    (delete-horizontal-space t)
-    (newline n)
-    (indent-according-to-mode)
-    (when (eolp)
-      (delete-horizontal-space t))
-    (goto-char loc)
-    (while (> n 0)
-      (cond ((bolp)
-	     (if do-left-margin (indent-to (current-left-margin)))
-	     (if do-fill-prefix (insert-and-inherit fill-prefix))))
-      (forward-line 1)
-      (setq n (1- n)))
-    (goto-char loc)
-    (end-of-line)
+	 (abbrev-mode nil)) 
+    (delete-horizontal-space t) 
+    (newline n) 
+    (indent-according-to-mode) 
+    (when (eolp) 
+      (delete-horizontal-space t)) 
+    (goto-char loc) 
+    (while (> n 0) 
+      (cond ((bolp) 
+             (if do-left-margin (indent-to (current-left-margin))) 
+             (if do-fill-prefix (insert-and-inherit fill-prefix)))) 
+      (forward-line 1) 
+      (setq n (1- n))) 
+    (goto-char loc) 
+    (end-of-line) 
     (indent-according-to-mode)))
 
 (global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
@@ -287,17 +272,16 @@ With arg N, insert N newlines."
 ;;----------------------------------------------------------------------------
 ;; Random line sorting
 ;;----------------------------------------------------------------------------
-(defun sort-lines-random (beg end)
-  "Sort lines in region randomly."
-  (interactive "r")
-  (save-excursion
-    (save-restriction
-      (narrow-to-region beg end)
-      (goto-char (point-min))
-      (let ;; To make `end-of-line' and etc. to ignore fields.
-          ((inhibit-field-text-motion t))
-        (sort-subr nil 'forward-line 'end-of-line nil nil
-                   (lambda (s1 s2) (eq (random 2) 0)))))))
+(defun sort-lines-random (beg end) 
+  "Sort lines in region randomly." 
+  (interactive "r") 
+  (save-excursion (save-restriction (narrow-to-region beg end) 
+                                    (goto-char (point-min)) 
+                                    (let ;; To make `end-of-line' and etc. to ignore fields.
+                                        ((inhibit-field-text-motion t)) 
+                                      (sort-subr nil 'forward-line 'end-of-line nil nil 
+                                                 (lambda (s1 s2) 
+                                                   (eq (random 2) 0)))))))
 
 
 
@@ -307,28 +291,27 @@ With arg N, insert N newlines."
 
 
 (require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r" "M-s" "C-h"))
-(add-hook 'after-init-hook
-          (lambda ()
-            (guide-key-mode 1)
+(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"
+                                     "C-x C-r" "C-x r" "M-s" "C-h"))
+(add-hook 'after-init-hook 
+          (lambda () 
+            (guide-key-mode 1) 
             (diminish 'guide-key-mode)))
 
 
-(defun move-line-down ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines 1))
-    (forward-line)
+(defun move-line-down () 
+  (interactive) 
+  (let ((col (current-column))) 
+    (save-excursion (forward-line) 
+                    (transpose-lines 1)) 
+    (forward-line) 
     (move-to-column col)))
 
-(defun move-line-up ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines -1))
+(defun move-line-up () 
+  (interactive) 
+  (let ((col (current-column))) 
+    (save-excursion (forward-line) 
+                    (transpose-lines -1)) 
     (move-to-column col)))
 
 (global-set-key (kbd "<C-s-down>") 'move-line-down)
