@@ -2,6 +2,8 @@
                                 ("SConscript\\'" . python-mode)) auto-mode-alist))
 
 (require-package 'pip-requirements)
+(require-package 'py-isort)
+(require-package 'pytest)
 
 (when (maybe-require-package 'anaconda-mode) 
   (after-load 'python (add-hook 'python-mode-hook 'anaconda-mode) 
@@ -15,6 +17,8 @@
 
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options (quote ("--max-line-length=100")))
+
+
 
 ;; sort imports
 (defun my-python-mode-before-save-hook () 
@@ -39,7 +43,7 @@ save, so we it's ok to move to the first import line."
 
 
 ;; python test
-(require-package 'pytest)
+
 
 
 
@@ -101,7 +105,8 @@ save, so we it's ok to move to the first import line."
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
-            (local-set-key (kbd "C-c g i") 'py-goto-imports) 
+            (local-set-key (kbd "C-c C-g") 'py-goto-imports) 
+            (local-set-key (kbd "C-c d b") 'python-nav--beginning-of-defun) 
             (venv-checkout-if-exist)))
 
 
@@ -110,21 +115,10 @@ save, so we it's ok to move to the first import line."
 (venv-initialize-interactive-shells)
 (venv-initialize-eshell)
 
-(setq projectile-switch-project-action 
-      '(lambda () 
-         (venv-projectile-auto-workon) 
-         (projectile-find-file)))
 
 (setq-default mode-line-format (cons 
                                 '(:exec venv-current-name)
                                 mode-line-format))
-
-
-;; venv improvement: unset variable, and deactivate maybe?
-
-;; (add-hook 'switch-buffer-functions
-;;           (lambda (pre cur)
-;;             (message "%S -> %S" pre cur)))
 
 
 (provide 'init-python-mode)

@@ -16,8 +16,7 @@
 (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
   `(eval-after-load ,package
      '(defadvice ,cmd (around ido-ubiquitous-new activate)
-        (let ((ido-ubiquitous-enable-compatibility nil))
-          ad-do-it))))
+        (let ((ido-ubiquitous-enable-compatibility nil)) ad-do-it))))
 
 (ido-ubiquitous-use-new-completing-read webjump 'webjump)
 (ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
@@ -30,7 +29,9 @@
 (setq ido-default-buffer-method 'selected-window)
 
 ;; http://www.reddit.com/r/emacs/comments/21a4p9/use_recentf_and_ido_together/cgbprem
-(add-hook 'ido-setup-hook (lambda () (define-key ido-completion-map [up] 'previous-history-element)))
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map [up] 'previous-history-element)))
 
 
 
@@ -43,7 +44,7 @@
 ;; flx-ido looks better with ido-vertical-mode
 (require-package 'ido-vertical-mode)
 (ido-vertical-mode)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
 
 
 (add-to-list 'ido-ignore-files "\\.DS_Store")
@@ -52,8 +53,7 @@
 (add-hook 'ido-setup-hook
           (lambda ()
             ;; Go straight home
-            (define-key ido-file-completion-map
-              (kbd "~")
+            (define-key ido-file-completion-map (kbd "~")
               (lambda ()
                 (interactive)
                 (if (looking-back "/")

@@ -15,4 +15,10 @@
 (add-auto-mode 'conf-mode "Procfile")
 
 
+
+;; ini mode
+(require 'any-ini-mode)
+(add-to-list 'auto-mode-alist '(".*\\.ini$" . any-ini-mode))
+(add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
+
 (provide 'init-misc)

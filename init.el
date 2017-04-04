@@ -31,7 +31,8 @@
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(require 'init-compat)
+;; disable in emacs 25
+;; (require 'init-compat)
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Calls (package-initialize)
@@ -64,7 +65,7 @@
 
 (require 'init-frame-hooks)
 ;;(require 'init-xterm)
-;;(require 'init-themes)
+(require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-dired)
@@ -189,11 +190,6 @@
 
 
 
-;; load one theme
-;;(require-package 'material-theme)
-;;(load-theme 'material t)
-;;(require-package 'misterioso)
-(load-theme 'misterioso)
 
 
 ;; after

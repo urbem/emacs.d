@@ -6,7 +6,7 @@
 
 
 (setq flycheck-flake8-maximum-line-length 100)
-
+(setq flycheck-pylintrc "~/.emacs.d/config/pylintrc")
 
 
 (provide 'init-flycheck)

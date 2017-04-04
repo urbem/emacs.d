@@ -102,12 +102,37 @@
 ;; ruler
 (add-hook 'prog-mode-hook 'ruler-mode)
 (modify-all-frames-parameters (list (cons 'cursor-type 'bar)))
-(set-cursor-color "green")
+(set-cursor-color "yellow")
+
+
+;; Change cursor color according to mode
+(defvar hcz-set-cursor-color-color "")
+(defvar hcz-set-cursor-color-buffer "")
+(defun hcz-set-cursor-color-according-to-mode ()
+  "change cursor color according to some minor modes."
+  ;; set-cursor-color is somewhat costly, so we only call it when needed:
+  (let ((color (if buffer-read-only "white" (if overwrite-mode "red" "yellow"))))
+    (unless (and (string= color hcz-set-cursor-color-color)
+                 (string= (buffer-name) hcz-set-cursor-color-buffer))
+      (set-cursor-color
+       (setq hcz-set-cursor-color-color color))
+      (setq hcz-set-cursor-color-buffer (buffer-name)))))
+(add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
+
 
 
 ;; buffer hightlight
 (set-face-attribute 'mode-line-buffer-id nil
                     :foreground "green")
+
+;; scrolling
+;; smooth scrolling
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 2))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't)       ;; scroll window under mouse
+(setq scroll-step 2) ;; keyboard Scroll one line at a time
+
 
 
 (provide 'init-gui-frames)
