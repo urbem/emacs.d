@@ -13,7 +13,7 @@ for i in "${arr[@]}"; do
 done
 
 
-brew install shellcheck ispell
+brew install shellcheck ispell chezscheme
 sudo pip install jedi autopep8 flake8 isort pylint
 easy_install Sphinx
 
