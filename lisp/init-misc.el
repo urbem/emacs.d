@@ -21,4 +21,7 @@
 (add-to-list 'auto-mode-alist '(".*\\.ini$" . any-ini-mode))
 (add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
 
+
+(require-package 'restart-emacs)
+
 (provide 'init-misc)

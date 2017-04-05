@@ -27,6 +27,11 @@
     (py-isort-buffer)))
 (add-hook 'before-save-hook #'my-python-mode-before-save-hook)
 
+
+;; import manage
+(require-package 'pyimport)
+
+
 ;; python got to import section
 (defun py-goto-imports () 
   "Move point to the block of imports.
@@ -120,13 +125,13 @@ save, so we it's ok to move to the first import line."
                                    (buffer-file-name)) " &"))))
 
 
-
+(require-package 'pydoc)
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
-            (local-set-key (kbd "C-c C-d") 'py-dumb-find) 
+            (local-set-key (kbd "C-c C-f") 'py-dumb-find) 
             (local-set-key (kbd "C-c C-g") 'py-goto-imports) 
-            (local-set-key (kbd "C-c d b") 'python-nav--beginning-of-defun) 
+            (local-set-key (kbd "C-c C-d") 'pydoc-at-point) 
             (venv-checkout-if-exist)))
 
 
