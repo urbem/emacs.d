@@ -8,7 +8,7 @@
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
-(setq-default blink-cursor-interval 0.4 bookmark-default-file "~/.emacs.d/data/bookmark"
+(setq-default blink-cursor-interval 0.4 bookmark-default-file "~/.emacs.d/bookmark"
               buffers-menu-max-size 30 case-fold-search t column-number-mode t delete-selection-mode
               t ediff-split-window-function 'split-window-horizontally ediff-window-setup-function
               'ediff-setup-windows-plain indent-tabs-mode nil make-backup-files nil

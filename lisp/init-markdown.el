@@ -8,6 +8,5 @@
 
 (require-package 'markdown-toc)
 
-(add-hook 'markdown-mode-hook #'markdownfmt-enable-on-save)
 
 (provide 'init-markdown)
