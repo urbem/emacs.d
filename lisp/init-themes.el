@@ -2,7 +2,7 @@
 (require-package 'color-theme-sanityinc-tomorrow)
 
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-solarized-light))
+;;(setq-default custom-enabled-themes '(sanityinc-solarized-light))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -29,6 +29,6 @@
   (color-theme-sanityinc-solarized-dark))
 
 
-
+(require-package 'bubbleberry-theme)
 
 (provide 'init-themes)
