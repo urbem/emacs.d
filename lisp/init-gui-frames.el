@@ -102,14 +102,14 @@
 ;; ruler
 (add-hook 'prog-mode-hook 'ruler-mode)
 (modify-all-frames-parameters (list (cons 'cursor-type 'bar)))
-;;(set-cursor-color "yellow")
+(set-cursor-color "yellow")
 
 
 ;; Change cursor color according to mode
 (defvar hcz-set-cursor-color-color "")
 (defvar hcz-set-cursor-color-buffer "")
 (defun hcz-set-cursor-color-according-to-mode ()
-  "change cursor color according to some minor modes."
+  "Change cursor color according to some minor modes."
   ;; set-cursor-color is somewhat costly, so we only call it when needed:
   (let ((color (if buffer-read-only "white" (if overwrite-mode "red" "yellow"))))
     (unless (and (string= color hcz-set-cursor-color-color)
@@ -117,7 +117,7 @@
       (set-cursor-color
        (setq hcz-set-cursor-color-color color))
       (setq hcz-set-cursor-color-buffer (buffer-name)))))
-(add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
+;;(add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
 
 
 
