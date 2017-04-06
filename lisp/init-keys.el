@@ -12,7 +12,7 @@
 (global-set-key (kbd "s-<right>") 'windmove-right)
 
 ;; spell
-
+(global-set-key (kbd "C-c w l") 'yd-trans-word)
 
 ;; editing
 (global-set-key (kbd "C-c v f") 'hs-toggle-hiding)

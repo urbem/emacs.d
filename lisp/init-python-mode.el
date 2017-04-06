@@ -88,6 +88,7 @@ save, so we it's ok to move to the first import line."
 
 
 
+
 ;; dumb search
 (defun py-dumb-find () 
   "Dumb search in virtualenv." 
@@ -124,8 +125,9 @@ save, so we it's ok to move to the first import line."
                                            "/bin/activate && pip install -r ") 
                                    (buffer-file-name)) " &"))))
 
-
+;; documents
 (require-package 'pydoc)
+
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 

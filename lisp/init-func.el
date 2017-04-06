@@ -154,5 +154,26 @@ Symbols matching the text at point are put first in the completion list."
 
 
 
+
+
+(defun my-shell-execute(cmd)
+  (interactive "sShell command: ")
+  (shell (get-buffer-create "my-shell-buf"))
+  (process-send-string (get-buffer-process "my-shell-buf")
+                       (concat cmd "\n")))
+
+;; translate word at point
+(defun yd-trans-word ()
+  "Translate word at point."
+  (interactive)
+  (let ((word))
+    (setq word (thing-at-point 'word 'no-properties))
+    (setq script "~/.emacs.d/script/ydcv.py")
+    (my-shell-execute ( format "python %s %s" script word))))
+
+
+
+
+
 (provide 'init-func)
 ;;; Init-func.el ends here
