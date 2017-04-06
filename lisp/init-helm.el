@@ -26,7 +26,9 @@
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
 
-
+;; helm-projectile
+(require-package 'helm-projectile)
+(helm-projectile-on)
 
 (provide 'init-helm)
 ;;; init-helm.el ends here

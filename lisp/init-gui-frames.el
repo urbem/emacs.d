@@ -134,5 +134,8 @@
 (setq scroll-step 2) ;; keyboard Scroll one line at a time
 
 
+;; volatile-highlight
+(require-package 'volatile-highlights)
+(volatile-highlights-mode t)
 
 (provide 'init-gui-frames)
