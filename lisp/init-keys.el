@@ -29,6 +29,11 @@
                    (popup-menu 'yank-menu)))
 
 
+;; actions
+(global-set-key (kbd "C-c j d") 'dumb-jump-go)
+(global-set-key (kbd "C-c j c") 'smart-compile)
+
+
 
 
 ;; M-x
