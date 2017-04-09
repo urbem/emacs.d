@@ -47,7 +47,7 @@
 
 
 ;; helm
-(global-set-key (kbd "C-c C-i") 'helm-imenu)
+(global-set-key (kbd "<f4>") 'helm-imenu)
 (global-set-key (kbd "C-c h l") 'helm-locate)
 (global-set-key (kbd "C-c h r") 'helm-recentf)
 (global-set-key (kbd "C-c h b") 'helm-bookmarks)

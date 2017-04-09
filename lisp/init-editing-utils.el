@@ -316,8 +316,8 @@ With arg N, insert N newlines."
 (global-set-key (kbd "<C-s-down>") 'move-line-down)
 (global-set-key (kbd "<C-s-up>") 'move-line-up)
 
-;; fancy-widen
-;;(fancy-narrow-mode)
+;; imenu
+(setq imenu-auto-rescan t)
 
 
 

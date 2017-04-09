@@ -128,12 +128,20 @@ save, so we it's ok to move to the first import line."
 ;; documents
 (require-package 'pydoc)
 
+(defun open-python-doc () 
+  "Open doc in default browser." 
+  (interactive) 
+  (setq word (thing-at-point 'word 'no-properties)) 
+  (setq url (format "https://docs.python.org/2/library/%s.html" word)) 
+  (with-temp-buffer (shell-command (format "open %s &" url) t)))
+
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
             (local-set-key (kbd "C-c C-f") 'py-dumb-find) 
             (local-set-key (kbd "C-c C-g") 'py-goto-imports) 
             (local-set-key (kbd "C-c C-d") 'pydoc-at-point) 
+            (local-set-key (kbd "C-c C-b") 'open-python-doc) 
             (venv-checkout-if-exist)))
 
 

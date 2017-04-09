@@ -132,6 +132,9 @@
 ;;(setq auto-save-interval 100)
 
 
+;; fancy-widen
+;;(fancy-narrow-mode)
+
 
 (provide 'unused)
 ;;; init-unused.el ends here
