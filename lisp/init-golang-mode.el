@@ -2,6 +2,7 @@
 (require 'go-bimenu)
 (require-package 'golint)
 (require-package 'go-guru)
+(require-package 'go-add-tags)
 (require-package 'godoctor)
 (require-package 'go-playground)
 (require-package 'go-eldoc)
@@ -41,8 +42,7 @@
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (go-eldoc-setup)
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command) "go build -v && go test -v && go vet && golint")))
+  (setq compile-command  "go build -v && go test -v && go vet && golint"))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
@@ -67,6 +67,12 @@
             (set (make-local-variable 'company-backends)
                  '(company-go))
             (company-mode)))
+
+(custom-set-variables '(go-add-tags-style 'lower-camel-case))
+
+(with-eval-after-load 'go-mode (define-key go-mode-map (kbd "C-c t") #'go-add-tags))
+
+
 
 
 (provide 'init-golang-mode)
