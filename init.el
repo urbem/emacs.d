@@ -99,6 +99,7 @@
 (require 'init-github)
 
 (require 'init-projectile)
+(require 'init-helm)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -154,7 +155,7 @@
 
 
 (require 'init-keys)
-(require 'init-helm)
+
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacs-client

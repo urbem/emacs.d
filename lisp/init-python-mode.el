@@ -4,6 +4,9 @@
 (require-package 'pip-requirements)
 (require-package 'py-isort)
 (require-package 'pytest)
+(require-package 'importmagic)
+(require-package 'pyimport)
+(require-package 'pydoc)
 
 (when (maybe-require-package 'anaconda-mode) 
   (after-load 'python (add-hook 'python-mode-hook 'anaconda-mode) 
@@ -17,8 +20,9 @@
 
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options (quote ("--max-line-length=100")))
-
-
+;; auto resolve import for python symbols
+(add-hook 'python-mode-hook 'importmagic-mode)
+(add-to-list 'helm-boring-buffer-regexp-list "\\*epc con")
 
 ;; sort imports
 (defun my-python-mode-before-save-hook () 
@@ -28,8 +32,8 @@
 (add-hook 'before-save-hook #'my-python-mode-before-save-hook)
 
 
-;; import manage
-(require-package 'pyimport)
+
+
 
 
 ;; python got to import section
@@ -126,7 +130,7 @@ save, so we it's ok to move to the first import line."
                                    (buffer-file-name)) " &"))))
 
 ;; documents
-(require-package 'pydoc)
+
 
 (defun open-python-doc () 
   "Open doc in default browser." 
@@ -154,6 +158,10 @@ save, so we it's ok to move to the first import line."
 (setq-default mode-line-format (cons 
                                 '(:exec venv-current-name)
                                 mode-line-format))
+
+
+
+
 
 
 (provide 'init-python-mode)
