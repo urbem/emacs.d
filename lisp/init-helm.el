@@ -9,10 +9,10 @@
 ;;; Code:
 
 (require-package 'helm)
+(require-package 'helm-flx)
 (require 'helm-config)
+
 (helm-mode 1)
-
-
 (helm-autoresize-mode t)
 ;; (setq helm-M-x-fuzzy-match t)
 
@@ -29,6 +29,9 @@
 ;; helm-projectile
 (require-package 'helm-projectile)
 (helm-projectile-on)
+
+(helm-flx-mode +1)
+
 
 (provide 'init-helm)
 ;;; init-helm.el ends here

@@ -56,16 +56,6 @@
   (add-hook 'compilation-filter-hook 'sanityinc/colourise-compilation-buffer))
 
 
-;; ;; smart-compile
-;; (require-package 'smart-compile)
-;; ;; smart compile
-
-;; (defvar smart-compile-alist ())
-;; (add-to-list 'smart-compile-alist '("\\.scala\\'" . "scala -feature -deprecation %f"))
-;; (add-to-list 'smart-compile-alist '("\\.rs\\'" . "rustc %f"))
-;; (add-to-list 'smart-compile-alist '("Cargo\\.toml\\'" . "cargo build"))
-;; (add-to-list 'smart-compile-alist '("\\.py\\'" . "python %f"))
-;; (add-to-list 'smart-compile-alist '("\\.go\\'" . "go run %f"))
-;; (global-set-key (kbd "C-c j j") 'smart-compile)
-
+(require-package 'smart-compile)
+(global-set-key (kbd "C-c j j") 'smart-compile)
 (provide 'init-compile)

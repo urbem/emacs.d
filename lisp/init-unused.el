@@ -136,5 +136,17 @@
 ;;(fancy-narrow-mode)
 
 
+;; smart-compile
+(require-package 'smart-compile)
+;; smart compile
+
+(add-to-list 'smart-compile-alist '("\\.scala\\'" . "scala -feature -deprecation %f"))
+(add-to-list 'smart-compile-alist '("\\.rs\\'" . "rustc %f"))
+(add-to-list 'smart-compile-alist '("Cargo\\.toml\\'" . "cargo build"))
+(add-to-list 'smart-compile-alist '("\\.py\\'" . "python %f"))
+(add-to-list 'smart-compile-alist '("\\.go\\'" . "go run %f"))
+
+
+
 (provide 'unused)
 ;;; init-unused.el ends here
