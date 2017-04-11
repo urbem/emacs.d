@@ -8,6 +8,7 @@
 (require-package 'pyimport)
 (require-package 'pydoc)
 
+;; anaconda for code jump and completion
 (when (maybe-require-package 'anaconda-mode) 
   (after-load 'python (add-hook 'python-mode-hook 'anaconda-mode) 
               (add-hook 'python-mode-hook 'anaconda-eldoc-mode)) 
@@ -17,22 +18,59 @@
                                      (sanityinc/local-push-company-backend 'company-anaconda))))))
 
 
+;; auto pep8 on save
 
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options (quote ("--max-line-length=100")))
 ;; auto resolve import for python symbols
-(add-hook 'python-mode-hook 'importmagic-mode)
 (add-to-list 'helm-boring-buffer-regexp-list "\\*epc con")
+
+
+
+(defun enable-my-python-or-not () 
+  "Only python file in my home dir need the hooks."
+  (eq t (and (s-starts-with?  (concat "/Users/" (user-login-name)) 
+                              (buffer-file-name)) 
+             (eq major-mode 'python-mode))))
+
+
+(defun my-python-mode-hook () 
+  "My python mode hook."
+  (when (enable-my-python-or-not) 
+    (py-autopep8-enable-on-save) 
+    (importmagic-mode)))
+
+(add-hook 'python-mode-hook #'my-python-mode-hook)
+
 
 ;; sort imports
 (defun my-python-mode-before-save-hook () 
   "Sort imports before save."
-  (when (eq major-mode 'python-mode) 
+  (when (enable-my-python-or-not) 
     (py-isort-buffer)))
 (add-hook 'before-save-hook #'my-python-mode-before-save-hook)
 
 
 
+
+;; virtualenv
+(require-package 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+
+
+(setq-default mode-line-format (cons 
+                                '(:exec venv-current-name)
+                                mode-line-format))
+
+;; documents
+
+
+(defun open-python-doc () 
+  "Open doc in default browser." 
+  (interactive) 
+  (setq word (thing-at-point 'word 'no-properties)) 
+  (setq url (format "https://docs.python.org/2/library/%s.html" word)) 
+  (with-temp-buffer (shell-command (format "open %s &" url) t)))
 
 
 
@@ -48,11 +86,6 @@ save, so we it's ok to move to the first import line."
     (if (re-search-forward "^import" nil t) 
         (move-beginning-of-line 1) 
       (goto-char old-point))))
-
-
-
-;; python test
-
 
 
 
@@ -129,15 +162,7 @@ save, so we it's ok to move to the first import line."
                                            "/bin/activate && pip install -r ") 
                                    (buffer-file-name)) " &"))))
 
-;; documents
 
-
-(defun open-python-doc () 
-  "Open doc in default browser." 
-  (interactive) 
-  (setq word (thing-at-point 'word 'no-properties)) 
-  (setq url (format "https://docs.python.org/2/library/%s.html" word)) 
-  (with-temp-buffer (shell-command (format "open %s &" url) t)))
 
 (add-hook 'python-mode-hook 
           (lambda () 
@@ -147,17 +172,6 @@ save, so we it's ok to move to the first import line."
             (local-set-key (kbd "C-c C-d") 'pydoc-at-point) 
             (local-set-key (kbd "C-c C-b") 'open-python-doc) 
             (venv-checkout-if-exist)))
-
-
-;; virtualenv
-(require-package 'virtualenvwrapper)
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
-
-
-(setq-default mode-line-format (cons 
-                                '(:exec venv-current-name)
-                                mode-line-format))
 
 
 

@@ -39,7 +39,7 @@
 (require 'init-elpa) ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 (require 'init-func)
-
+(require 'init-packages)
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -50,17 +50,6 @@
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
-(require-package 'wgrep)
-(require-package 'project-local-variables)
-(require-package 'diminish)
-(require-package 'scratch)
-(require-package 'mwe-log-commands)
-
-
-;; install some packages...
-
-(require-package 'py-autopep8)
-(require-package 'ecb)
 
 
 (require 'init-frame-hooks)

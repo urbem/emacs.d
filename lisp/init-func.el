@@ -1,5 +1,26 @@
+;;; init-func.el
+
+
+;;; Code:
+
+
+(defun delete-current-buffer-file ()
+  "Remove file connected to current buffer and kill buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename
+                  (file-exists-p filename)))
+        (ido-kill-buffer)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
+
+
 (defun kill-some-buffer (buffer)
-  "Ignore some buffers."
+  "Ignore some BUFFER."
   (if (member (buffer-name buffer)
               '("*Messages*" "*anaconda-mode*"))
       (message "Ignore you : %s" (buffer-name buffer))
@@ -79,6 +100,7 @@ Symbols matching the text at point are put first in the completion list."
 
 
 (defadvice bookmark-jump (after bookmark-jump activate)
+  "AFTER BOOKMARK-JUMP ACTIVATE."
   (let ((latest (bookmark-get-bookmark bookmark)))
     (setq bookmark-alist (delq latest bookmark-alist))
     (add-to-list 'bookmark-alist latest)))
@@ -88,7 +110,7 @@ Symbols matching the text at point are put first in the completion list."
 (defun copy-line
     (&optional
      arg)
-  "Do a kill-line but copy rather than kill.  This function directly calls
+  "Do a `kill-line` but copy rather than kill.  This function directly calls
     kill-line, so see documentation of kill-line for how to use it including prefix
     argument and relevant variables.  This function works by temporarily making the
     buffer read-only."
@@ -97,32 +119,7 @@ Symbols matching the text at point are put first in the completion list."
         (kill-read-only-ok t))
     (kill-line arg)))
 ;; optional key binding
-(global-set-key "\C-c\C-k" 'copy-line)
 
-
-;; (defun copy-string ()
-;;   "Copy a string in double quote."
-;;   (interactive)
-;;   (let ((point-start (search-forward "\""))
-;;         (point-end (search-forward "\""))
-;;         )
-;;     (message "start: %s, end:%s" point-start point-end)
-;;     (copy-region-as-kill point-start (- point-end 1))
-;;     )
-;;   )
-
-
-;; (defun copy-token ()
-;;   "Copy a token."
-;;   (interactive)
-;;   (let ((point-start (point))
-;;         (point-end (search-forward " "))
-;;         )
-;;     (message "length: %d" (- point-end  point-start))
-;;     (copy-region-as-kill point-start (- point-end 1))
-
-;;     )
-;;   )
 
 
 

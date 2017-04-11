@@ -1,6 +1,6 @@
 ;; buffers
 (global-set-key (kbd "C-c b k") 'only-current-buffer)
-
+(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;; pop mark (disable orgin mail compre command
 (define-key  global-map  "\C-xm"  'pop-to-mark-command)
@@ -22,6 +22,7 @@
                   (join-line -1)))
 (global-set-key (kbd "s-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
+(global-set-key "\C-c\C-k" 'copy-line)
 (global-set-key (kbd "C-c C-p") 'copy-in-pair)
 (global-set-key "\C-cy"
                 '(lambda ()

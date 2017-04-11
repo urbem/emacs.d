@@ -147,6 +147,31 @@
 (add-to-list 'smart-compile-alist '("\\.go\\'" . "go run %f"))
 
 
+;; (defun copy-string ()
+;;   "Copy a string in double quote."
+;;   (interactive)
+;;   (let ((point-start (search-forward "\""))
+;;         (point-end (search-forward "\""))
+;;         )
+;;     (message "start: %s, end:%s" point-start point-end)
+;;     (copy-region-as-kill point-start (- point-end 1))
+;;     )
+;;   )
+
+
+;; (defun copy-token ()
+;;   "Copy a token."
+;;   (interactive)
+;;   (let ((point-start (point))
+;;         (point-end (search-forward " "))
+;;         )
+;;     (message "length: %d" (- point-end  point-start))
+;;     (copy-region-as-kill point-start (- point-end 1))
+
+;;     )
+;;   )
+
+
 
 (provide 'unused)
 ;;; init-unused.el ends here
