@@ -13,11 +13,28 @@ for i in "${arr[@]}"; do
 done
 
 
-brew install shellcheck ispell chezscheme
-sudo pip install jedi autopep8 flake8 isort pylint
-easy_install Sphinx
+sudo pip install jedi autopep8 flake8 isort pylint rope ropemacs
 
-which vmd || cnpm install -g vmd
+
+install_pymacs() {
+    rm -rf v0.25 pinard-Pymacs-*
+    wget https://github.com/pinard/Pymacs/zipball/v0.25
+    unzip v0.25
+    cd pinard-Pymacs-*
+    make
+    python setup.py build
+    python setup.py install
+    mkdir -p ~/.emacs.d/site-lisp/pymacs/
+    cp pymacs.el ~/.emacs.d/site-lisp/pymacs/
+    cd ..
+    rm -rf v0.25 pinard-Pymacs-*
+
+}
+
+pip show pymacs || install_pymacs
+
+
+
 
 # if flycheck has configparser import error, try uninstall it and install again
 # sudo pip uninstall configparser && pip install configparser

@@ -4,7 +4,7 @@
 
 ;; pop mark (disable orgin mail compre command
 (define-key  global-map  "\C-xm"  'pop-to-mark-command)
-(define-key global-map "\C-xp" 'package-install)
+
 
 (global-set-key (kbd "s-<up>") 'windmove-up)
 (global-set-key (kbd "s-<down>") 'windmove-down)
