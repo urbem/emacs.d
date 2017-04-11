@@ -96,6 +96,10 @@
                                                                                 "http://www.urbandictionary.com/define.php?term="
                                                                                 ""])))
 
+(eval-after-load "webjump" '(add-to-list 'webjump-sites '("Python" . [simple-query
+                                                                      "https://docs.python.org/2.7/"
+                                                                      "https://docs.python.org/2.7/search.html?check_keywords=yes&area=default&q="
+                                                                      ""])))
 
 
 ;; remove lock files

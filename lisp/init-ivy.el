@@ -34,6 +34,7 @@
 ;;  (after-load 'ivy
 ;;    (define-key ivy-mode-map (kbd "C-s") 'swiper)))
 
-(setq ivy-ignore-buffers '("\\*anaconda-mode\\*"))
+(setq ivy-ignore-buffers '("\\*anaconda-mode\\*" "my-shell-buf" "\\*Pp Eval Output\\*"
+                           "\\*Help\\*"))
 
 (provide 'init-ivy)

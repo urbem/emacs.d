@@ -65,12 +65,21 @@
 ;; documents
 
 
-(defun open-python-doc () 
+(defun open-url-in-browser (url) 
+  "Open URL in default browser."
+  (with-temp-buffer (shell-command (format "open %s &" url) ) t))
+
+
+
+
+
+(defun py-open-online-doc () 
   "Open doc in default browser." 
   (interactive) 
   (setq word (thing-at-point 'word 'no-properties)) 
-  (setq url (format "https://docs.python.org/2/library/%s.html" word)) 
-  (with-temp-buffer (shell-command (format "open %s &" url) t)))
+  (setq base-url "https://docs.python.org") 
+  (setq url (format "%s/2.7/library/%s.html" base-url word)) 
+  (open-url-in-browser url))
 
 
 
@@ -170,7 +179,7 @@ save, so we it's ok to move to the first import line."
             (local-set-key (kbd "C-c C-f") 'py-dumb-find) 
             (local-set-key (kbd "C-c C-g") 'py-goto-imports) 
             (local-set-key (kbd "C-c C-d") 'pydoc-at-point) 
-            (local-set-key (kbd "C-c C-b") 'open-python-doc) 
+            (local-set-key (kbd "C-c C-b") 'py-open-online-doc) 
             (venv-checkout-if-exist)))
 
 
