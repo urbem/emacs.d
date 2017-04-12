@@ -193,8 +193,5 @@ save, so we it's ok to move to the first import line."
   (setq ropemacs-confirm-saving 'nil))
 
 (setq ropemacs-enable-shortcuts nil)
-
 (setq ropemacs-enable-autoimport 't)
-(Global-set-key "\C-xpl" 'load-ropemacs)
-
 (provide 'init-python-mode)
