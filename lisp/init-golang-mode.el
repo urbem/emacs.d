@@ -22,9 +22,13 @@
 (setq flycheck-gometalinter-deadline "10s")
 
 
+(exec-path-from-shell-copy-env "GOPATH")
+(exec-path-from-shell-copy-env "GOROOT")
+(exec-path-from-shell-copy-env "PATH")
 
-(setenv "GOPATH" "/Users/yayu/Golang")
-(setenv "PATH" (concat (getenv "PATH") ":" "/Users/yayu/Golang/bin"))
+;;(setenv "GOPATH" "/Users/yayu/Golang")
+;;(setenv "GOROOT" "/usr/local/opt/go/libexec")
+;;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/yayu/Golang/bin"))
 
 
 (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
@@ -42,7 +46,7 @@
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (go-eldoc-setup)
-  (setq (make-local-variable 'compile-command)  "go build -v && go test -v && go vet && golint"))
+  (set (make-local-variable 'compile-command)  "go build -v && go test -v && go vet && golint"))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
@@ -73,6 +77,7 @@
 (with-eval-after-load 'go-mode (define-key go-mode-map (kbd "C-c t") #'go-add-tags))
 
 
+(setq flycheck-gometalinter-disable-linters '("gotype"))
 
 
 (provide 'init-golang-mode)
