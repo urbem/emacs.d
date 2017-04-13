@@ -77,7 +77,10 @@
 (with-eval-after-load 'go-mode (define-key go-mode-map (kbd "C-c t") #'go-add-tags))
 
 
-(setq flycheck-gometalinter-disable-linters '("gotype"))
-
+(setq flycheck-gometalinter-disable-all t)
+(setq flycheck-gometalinter-enable-linters '("golint" "deadcode" "unused" "gas" "staticcheck"
+                                             "gosimple" "goconst" "unconvert" "interfacer"
+                                             "ineffassign" "dupl" "errcheck" "varcheck" "safesql"
+                                             "unparam" "misspell"  "goimports"))
 
 (provide 'init-golang-mode)
