@@ -55,7 +55,6 @@
 ;; virtualenv
 (require-package 'virtualenvwrapper)
 (venv-initialize-interactive-shells)
-(venv-initialize-eshell)
 
 
 (setq-default mode-line-format (cons 
