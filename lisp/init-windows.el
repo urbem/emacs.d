@@ -94,11 +94,6 @@ Call a second time to restore the original window configuration."
 (global-set-key (kbd "<M-s-right>")  'buf-move-right)
 (setq buffer-move-stay-after-swap t)
 
-;; golden ratio
-(require-package 'golden-ratio)
-
-(golden-ratio-mode 1)
-(setq golden-ratio-auto-scale t)
 
 
 (provide 'init-windows)

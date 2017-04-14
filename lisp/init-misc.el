@@ -21,8 +21,11 @@
 (add-to-list 'auto-mode-alist '(".*\\.ini$" . any-ini-mode))
 (add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
 
+
+
+
 ;; dockerfile mode lint
-(require 'flycheck-hadolint)
+;;(require 'flycheck-hadolint)
 
 
 (require-package 'restart-emacs)
