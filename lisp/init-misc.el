@@ -22,6 +22,15 @@
 (add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
 
 
+;; auto format shell script when save
+(defun my-shell-mode-auto-format-hook ()
+  "Add auto format for shell mode."
+  (when (eq major-mode 'sh-mode)
+    (setq f (buffer-file-name))
+    (shell-command (format "shfmt -w %s" f))))
+
+(add-hook 'after-save-hook #'my-shell-mode-auto-format-hook)
+
 
 
 ;; dockerfile mode lint
