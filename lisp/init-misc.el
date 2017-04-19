@@ -27,7 +27,7 @@
   "Add auto format for shell mode."
   (when (eq major-mode 'sh-mode)
     (setq f (buffer-file-name))
-    (shell-command (format "shfmt -w %s" f))))
+    (shell-command (format "shfmt -i 2 -w %s" f))))
 
 (add-hook 'after-save-hook #'my-shell-mode-auto-format-hook)
 

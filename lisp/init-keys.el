@@ -53,6 +53,7 @@
 
 
 
+(global-set-key (kbd "C-c o") 'icicle-occur)
 
 
 (provide 'init-keys)

@@ -10,7 +10,7 @@
 
 (-map
  'require-package
- '(wgrep project-local-variables diminish scratch mwe-log-commands ecb py-autopep8 s grapnel))
+ '(wgrep project-local-variables diminish scratch mwe-log-commands ecb py-autopep8 s icicles))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

@@ -170,6 +170,23 @@ Symbols matching the text at point are put first in the completion list."
 
 
 
+(defun side-ibuffer ()
+  (interactive)
+  (let (( buffer (save-window-excursion (ibuffer nil "*side-ibuffer*")
+                                        (setq-local buffer-stale-function
+                                                    (lambda
+                                                      (&rest
+                                                       ignore)
+                                                      t))
+                                        (setq-local revert-buffer-function
+                                                    (lambda
+                                                      (&rest
+                                                       ignore)
+                                                      (ibuffer-update nil t)))
+                                        (auto-revert-mode)
+                                        (current-buffer))))
+    (pop-to-buffer buffer '(display-buffer-in-side-window (side . left)))))
+
 
 
 (provide 'init-func)
