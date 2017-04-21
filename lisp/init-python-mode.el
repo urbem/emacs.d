@@ -184,7 +184,7 @@ save, so we it's ok to move to the first import line."
 
 
 (defun load-ropemacs () 
-  "Load pymacs and ropemacs" 
+  "Load pymacs and ropemacs." 
   (interactive) 
   (require 'pymacs) 
   (pymacs-load "ropemacs" "rope-")

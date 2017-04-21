@@ -28,4 +28,9 @@
   (setq dired-use-ls-dired nil))
 
 
+(require-package 'direx)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+
+
+
 (provide 'init-dired)
