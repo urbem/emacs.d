@@ -139,7 +139,4 @@
 (volatile-highlights-mode t)
 
 
-
-
-
 (provide 'init-gui-frames)

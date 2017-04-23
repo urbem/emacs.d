@@ -26,9 +26,9 @@
 (exec-path-from-shell-copy-env "GOROOT")
 (exec-path-from-shell-copy-env "PATH")
 
-;;(setenv "GOPATH" "/Users/yayu/Golang")
-;;(setenv "GOROOT" "/usr/local/opt/go/libexec")
-;;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/yayu/Golang/bin"))
+(setenv "GOPATH" "/Users/yayu/Golang")
+(setenv "GOROOT" "/usr/local/opt/go/libexec")
+(setenv "PATH" (concat "/Users/yayu/Golang/bin" ":" (getenv "PATH")))
 
 
 (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)

@@ -57,6 +57,7 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
+
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -142,7 +143,7 @@
 (when *is-a-mac* (require-package 'osx-location))
 (require-package 'regex-tool)
 
-
+(require 'init-mode-line)
 (require 'init-keys)
 
 
