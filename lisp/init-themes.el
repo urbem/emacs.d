@@ -29,6 +29,6 @@
   (color-theme-sanityinc-solarized-dark))
 
 
-(require-package 'bubbleberry-theme)
+
 
 (provide 'init-themes)

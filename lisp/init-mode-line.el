@@ -5,14 +5,26 @@
 
 ;;; Code:
 
+(require 'powerline)
+(require 'moe-theme)
 
-;;(require 'spaceline-config)
-;;(spaceline-emacs-theme)
-;;(spaceline-helm-mode)
+;; Show highlighted buffer-id as decoration. (Default: nil)
+(setq moe-theme-highlight-buffer-id t)
 
-(require-package 'smart-mode-line)
-(sml/setup)
-(setq sml/theme 'dark)
+;; Resize titles (optional).
+(setq moe-theme-resize-markdown-title '(1.5 1.4 1.3 1.2 1.0 1.0))
+(setq moe-theme-resize-org-title '(1.5 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
+(setq moe-theme-resizne-rst-title '(1.5 1.4 1.3 1.2 1.1 1.0))
+
+
+;; Finally, apply moe-theme now.
+;; Choose what you like, (moe-light) or (moe-dark)
+(moe-dark)
+
+(powerline-moe-theme)
+
+
+
 
 (provide 'init-mode-line)
 ;;; init-mode-line.el ends here

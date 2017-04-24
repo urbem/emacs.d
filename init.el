@@ -143,7 +143,7 @@
 (when *is-a-mac* (require-package 'osx-location))
 (require-package 'regex-tool)
 
-
+(require 'init-mode-line)
 (require 'init-keys)
 
 

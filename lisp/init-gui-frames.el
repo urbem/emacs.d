@@ -121,10 +121,6 @@
 
 
 
-;; buffer hightlight
-(set-face-attribute 'mode-line-buffer-id nil
-                    :foreground "green")
-
 ;; scrolling
 ;; smooth scrolling
 ;; scroll one line at a time (less "jumpy" than defaults)
