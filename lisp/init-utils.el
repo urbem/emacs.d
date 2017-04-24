@@ -111,5 +111,10 @@
 (setq auto-save-default nil)
 
 
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
+
 
 (provide 'init-utils)
