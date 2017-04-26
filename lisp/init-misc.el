@@ -24,11 +24,10 @@
             (company-mode)))
 
 
-;; ini mode
 (require 'any-ini-mode)
-(add-to-list 'auto-mode-alist '(".*\\.ini$" . any-ini-mode))
-(add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
-
+(add-auto-mode 'any-ini-mode ".*\\.ini$")
+(add-auto-mode 'any-ini-mode ".*\\.conf$")
+(add-auto-mode 'any-ini-mode ".*pylintrc$")
 
 
 ;; auto format shell script when save
