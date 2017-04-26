@@ -30,3 +30,4 @@ semanticdb/
 bookmark
 ido.last
 .cache/
+.DS_Store

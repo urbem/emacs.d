@@ -31,7 +31,8 @@
                             guide-key  highlight-escape-sequences whitespace-cleanup-mode
                             elisp-slime-nav dockerfile-mode clojure-mode
                             clojure-mode-extra-font-locking groovy-mode prodigy cider yesql-ghosts
-                            string-edit go-autocomplete go-mode helm ecb)))
+                            string-edit go-autocomplete go-mode helm ecb restclient
+                            company-restclient)))
 
 (condition-case nil (init--install-packages)
   (error

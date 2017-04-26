@@ -15,11 +15,20 @@
 (add-auto-mode 'conf-mode "Procfile")
 
 
+(add-auto-mode 'restclient-mode ".*\\.http$")
+
+(add-hook 'restclient-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(company-restclient))
+            (company-mode)))
+
 
 ;; ini mode
 (require 'any-ini-mode)
 (add-to-list 'auto-mode-alist '(".*\\.ini$" . any-ini-mode))
 (add-to-list 'auto-mode-alist '(".*\\.conf$" . any-ini-mode))
+
 
 
 ;; auto format shell script when save
