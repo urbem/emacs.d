@@ -36,7 +36,7 @@
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (define-key  global-map  "\C-xm"  'pop-to-mark-command)
 
-
+(global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "M-j")
                 (lambda ()
                   (interactive)
