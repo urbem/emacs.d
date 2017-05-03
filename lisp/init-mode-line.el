@@ -26,5 +26,23 @@
 
 
 
+(setq which-func-unknown "⊥"           ; The default is really boring…
+      which-func-format
+      `((:propertize (" ➤ " which-func-current)
+                     local-map
+                     ,which-func-keymap
+                     face
+                     which-func
+                     mouse-face
+                     mode-line-highlight
+                     help-echo
+                     "mouse-1: go to beginning\n\
+mouse-2: toggle rest visibility\n\
+mouse-3: go to end")))
+
+(setq-default header-line-format '(which-func-mode ("" which-func-format " ")))
+
+(which-func-mode)
+
 (provide 'init-mode-line)
 ;;; init-mode-line.el ends here
