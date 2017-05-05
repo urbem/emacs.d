@@ -11,6 +11,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+        describe-key
         end-of-buffer
         package-install
+        sanityinc/toggle-delete-other-windows
         ))

@@ -32,3 +32,4 @@ ido.last
 .cache/
 .DS_Store
 url/
+.mc-lists.el
