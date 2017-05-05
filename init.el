@@ -106,6 +106,7 @@
 (require 'init-haml)
 (require 'init-python-mode)
 (require 'init-golang-mode)
+(require 'init-cc)
 (unless (version<= emacs-version "24.3") 
   (require 'init-haskell))
 (require 'init-elm)
