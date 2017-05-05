@@ -42,6 +42,9 @@
                   (interactive)
                   (join-line -1)))
 (global-set-key (kbd "s-.") 'set-mark-command)
+(global-set-key (kbd "C-a") 'xah-beginning-of-line-or-block)
+(global-set-key (kbd "C-e") 'xah-end-of-line-or-block)
+
 
 
 (global-set-key (kbd "M-x") 'smex)

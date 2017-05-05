@@ -123,6 +123,28 @@ Symbols matching the text at point are put first in the completion list."
 
 
 
+(defun xah-select-text-in-quote ()
+  "Select text between the nearest left and right delimiters.
+Delimiters here includes the following chars: \"<>(){}[]“”‘’‹›«»「」『』【】〖〗《》〈〉〔〕（）
+This command select between any bracket chars, not the inner text of a bracket. For example, if text is
+
+ (a(b)c▮)
+
+ the selected char is “c”, not “a(b)c”.
+
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2016-12-18"
+  (interactive)
+  (let ((-skipChars (if (boundp 'xah-brackets)
+                        (concat "^\"" xah-brackets)
+                      "^\"<>(){}[]“”‘’‹›«»「」『』【】〖〗《》〈〉〔〕（）")) -pos)
+    (skip-chars-backward -skipChars)
+    (setq -pos (point))
+    (skip-chars-forward -skipChars)
+    (set-mark -pos)))
+
+
+
 (defvar symbol-pairs '(("\"" . "\"")
                        ("(" . ")")
                        ("[" . "]")
@@ -215,6 +237,47 @@ and flip the internal quotes as well.  Best to run on the first
                       (delete-char 1)
                       (insert new-c)
                       (replace-string new-c old-c nil (1+ start) end)))))
+
+
+
+
+;; Move Cursor to Beginning of Line/Paragraph
+;; http://ergoemacs.org/emacs/emacs_keybinding_design_beginning-of-line-or-block.html
+
+(defun xah-beginning-of-line-or-block ()
+  "Move cursor to beginning of line or previous paragraph.
+
+• When called first time, move cursor to beginning of char in current line.
+  (if already, move to beginning of line.)
+• When called again, move cursor backward by jumping over any sequence of
+  whitespaces containing 2 blank lines.
+
+Version 2017-05-04"
+  (interactive)
+  (let ((-p (point)))
+    (if (equal last-command this-command )
+        (if (re-search-backward "\n[\t\n ]*\n+" nil "NOERROR")
+            (progn (skip-chars-backward "\n\t ")
+                   (forward-char ))
+          (goto-char (point-min)))
+      (progn (back-to-indentation)
+             (when (eq -p (point))
+               (beginning-of-line))))))
+
+(defun xah-end-of-line-or-block ()
+  "Move cursor to end of line or next paragraph.
+
+• When called first time, move cursor to end of line.
+• When called again, move cursor forward by jumping over any sequence
+of whitespaces containing 2 blank lines.
+Version 2017-05-04"
+  (interactive)
+  (if (or (equal (point)
+                 (line-end-position))
+          (equal last-command this-command ))
+      (when (re-search-forward "\n[\t\n ]*\n+" nil "NOERROR" )
+        (progn (end-of-line )))
+    (end-of-line)))
 
 
 (provide 'init-func)
