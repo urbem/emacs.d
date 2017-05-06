@@ -29,7 +29,13 @@
 
 (add-to-list 'auto-mode-alist '("\\.ext\\'" . c-mode))
 
-(add-to-list 'company-backends 'company-c-headers)
+;;(add-to-list 'company-backends 'company-c-headers)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(company-c-headers company-files company-keywords company-dabbrev company-clang))
+            (company-mode)))
+
 
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
