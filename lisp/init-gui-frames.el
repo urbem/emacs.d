@@ -155,7 +155,7 @@
 (setq sr-speedbar-max-width 40)
 (setq sr-speedbar-right-side nil)
 (setq sr-speedbar-width-console 25)
-(setq sr-speedbar-width 27)
+(setq sr-speedbar-width 25)
 (setq sr-speedbar-skip-other-window-p t)
 
 (when window-system
