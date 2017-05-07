@@ -280,5 +280,9 @@ Version 2017-05-04"
     (end-of-line)))
 
 
+
+
+
+
 (provide 'init-func)
 ;;; Init-func.el ends here

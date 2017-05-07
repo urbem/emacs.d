@@ -11,6 +11,8 @@ For example, change all parenthesis () to square brackets [].
 
 When called in lisp program, *from-chars or *to-chars is a string of bracket pair. eg \"(paren)\",  \"[bracket]\", etc.
 The first and last characters are used.
+
+
 If the string contains “,2”, then the first 2 chars and last 2 chars are used, for example  \"[[bracket,2]]\".
 If *to-chars is equal to string “delete brackets”, the brackets are deleted.
 

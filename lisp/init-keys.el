@@ -55,6 +55,7 @@
 (global-set-key (kbd "<f4>") 'helm-imenu)
 
 
+(global-set-key (kbd "<f5>") 'sr-speedbar-toggle)
 
 (global-set-key (kbd "C-c o") 'helm-occur)
 

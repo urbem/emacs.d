@@ -32,7 +32,7 @@
                             elisp-slime-nav dockerfile-mode clojure-mode
                             clojure-mode-extra-font-locking groovy-mode prodigy cider yesql-ghosts
                             string-edit go-autocomplete go-mode helm ecb restclient
-                            company-restclient google-c-style company-c-headers irony)))
+                            company-restclient google-c-style company-c-headers irony sr-speedbar )))
 
 (condition-case nil (init--install-packages)
   (error
