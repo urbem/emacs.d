@@ -42,6 +42,7 @@
 
 (defun load-raml-mode ()
   "Load raml mode."
+  (interactive)
   (load-file "~/.emacs.d/site-lisp/modes/raml-mode.el")
   (raml-mode))
 

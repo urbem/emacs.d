@@ -12,7 +12,8 @@
   '("displayName" "description" "type" "string" "number" "integer" "date" "boolean" "file" "enum"
     "pattern" "minLength" "maxLength" "minimum" "maximum" "example" "repeat" "default" "title"
     "version" "baseUri" "mediaType" "schemas" "baseUriParameters" "bucketName" "protocols" "content"
-    "body" "applications/json" "text/xml" "get" "put" "delete" "schema" "headers"))
+    "body" "application/json" "text/xml" "get" "put" "delete" "schema" "headers" "required"
+    "responses" "include" "queryParameters"))
 
 
 ;; (defvar raml-keywords
