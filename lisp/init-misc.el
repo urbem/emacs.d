@@ -40,6 +40,11 @@
 (add-hook 'after-save-hook #'my-shell-mode-auto-format-hook)
 
 
+(defun load-raml-mode ()
+  "Load raml mode."
+  (load-file "~/.emacs.d/site-lisp/modes/raml-mode.el")
+  (raml-mode))
+
 
 ;; dockerfile mode lint
 ;;(require 'flycheck-hadolint)

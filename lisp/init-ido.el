@@ -48,6 +48,7 @@
 
 
 (add-to-list 'ido-ignore-files "\\.DS_Store")
+(add-to-list 'ido-ignore-files "\.pyc")
 
 
 (add-hook 'ido-setup-hook

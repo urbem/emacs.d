@@ -7,10 +7,18 @@
 (defvar raml-indent-offset 4
   "Indent offset for RAML mode")
 
+
 (defvar raml-keywords
-  '("annotationTypes" "baseUri" "baseUriParameters" "body" "content" "description" "documentation"
-    "mediaType" "properties" "protocols" "resourceTypes" "responses" "schemas" "securedBy"
-    "securitySchemes" "title" "traits" "type" "types" "uses" "version"))
+  '("displayName" "description" "type" "string" "number" "integer" "date" "boolean" "file" "enum"
+    "pattern" "minLength" "maxLength" "minimum" "maximum" "example" "repeat" "default" "title"
+    "version" "baseUri" "mediaType" "schemas" "baseUriParameters" "bucketName" "protocols" "content"
+    "body" "applications/json" "text/xml" "get" "put" "delete" "schema" "headers"))
+
+
+;; (defvar raml-keywords
+;;   '("annotationTypes" "baseUri" "baseUriParameters" "body" "content" "description" "documentation"
+;;     "mediaType" "properties" "protocols" "resourceTypes" "responses" "schemas" "securedBy"
+;;     "securitySchemes" "title" "traits" "type" "types" "uses" "version"))
 
 (defvar raml-constants '("true" "false" "nil"))
 
