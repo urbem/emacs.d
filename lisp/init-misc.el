@@ -50,6 +50,9 @@
 ;; dockerfile mode lint
 ;;(require 'flycheck-hadolint)
 
+;; toml mode
+(require 'toml-mode)
+
 
 (require-package 'restart-emacs)
 
