@@ -126,7 +126,7 @@
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 2))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq mouse-wheel-follow-mouse 't)       ;; scroll window under mouse
 (setq scroll-step 2) ;; keyboard Scroll one line at a time
 
 
@@ -134,40 +134,6 @@
 (require-package 'volatile-highlights)
 (volatile-highlights-mode t)
 
-
-;; sr-speedbar
-
-
-
-
-(setq speedbar-frame-parameters '((minibuffer)
-                                  (width . 25)
-                                  (border-width . 0)
-                                  (menu-bar-lines . 0)
-                                  (tool-bar-lines . 0)
-                                  (unsplittable . t)
-                                  (left-fringe . 0)))
-(setq speedbar-hide-button-brackets-flag t)
-(setq speedbar-show-unknown-files t)
-(setq speedbar-smart-directory-expand-flag t)
-(setq speedbar-use-images nil)
-(setq sr-speedbar-auto-refresh t)
-(setq sr-speedbar-max-width 40)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-width-console 25)
-(setq sr-speedbar-width 25)
-(setq sr-speedbar-skip-other-window-p t)
-
-(when window-system
-  (defadvice sr-speedbar-open (after sr-speedbar-open-resize-frame activate)
-    (set-frame-width (selected-frame)
-                     (+ (frame-width) sr-speedbar-width)))
-  (ad-enable-advice 'sr-speedbar-open 'after 'sr-speedbar-open-resize-frame)
-  (defadvice sr-speedbar-close (after sr-speedbar-close-resize-frame activate)
-    (sr-speedbar-recalculate-width)
-    (set-frame-width (selected-frame)
-                     (- (frame-width) sr-speedbar-width)))
-  (ad-enable-advice 'sr-speedbar-close 'after 'sr-speedbar-close-resize-frame))
 
 
 

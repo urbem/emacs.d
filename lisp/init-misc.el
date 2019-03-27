@@ -53,11 +53,6 @@
 ;; toml mode
 (require 'toml-mode)
 
-;; neotree
-;; ---> package-install all-the-icons
-;; ---> all-the-icons-install-fonts
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(global-set-key [f8] 'neotree-toggle)
 
 (require-package 'restart-emacs)
 
