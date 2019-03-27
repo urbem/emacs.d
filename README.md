@@ -1,5 +1,8 @@
 ## Setup
 
+## MAC
+* brew install the_silver_searcher
+
 
 ## Emacs 
 

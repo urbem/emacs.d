@@ -15,7 +15,7 @@
                              (when filename (abbreviate-file-name filename))))))
 
 
-(setq desktop-modes-not-to-save '(tags-table-mode python-mode))
+(setq desktop-modes-not-to-save '(tags-table-mode python-mode json-mode emacs-lisp-mode))
 
 ;;----------------------------------------------------------------------------
 ;; Restore histories and registers after saving
