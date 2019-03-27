@@ -1,6 +1,6 @@
 ## Setup
 
-## MAC
+## Mac
 * brew install the_silver_searcher
 
 
@@ -10,4 +10,6 @@ install packages:
 
 * yaml-imenu
 * json-navigator
+* docker
+* helpful
 
