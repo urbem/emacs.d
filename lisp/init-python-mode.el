@@ -19,8 +19,8 @@
 
 
 ;; auto pep8 on save
-
 (setq py-autopep8-options (quote ("--max-line-length=100")))
+
 ;; auto resolve import for python symbols
 (add-to-list 'helm-boring-buffer-regexp-list "\\*epc con")
 
@@ -51,7 +51,6 @@
 
 
 
-
 ;; virtualenv
 (require-package 'virtualenvwrapper)
 (venv-initialize-interactive-shells)
@@ -62,13 +61,9 @@
                                 mode-line-format))
 
 ;; documents
-
-
 (defun open-url-in-browser (url) 
   "Open URL in default browser."
   (with-temp-buffer (shell-command (format "open %s &" url) ) t))
-
-
 
 
 
@@ -97,7 +92,6 @@ save, so we it's ok to move to the first import line."
 
 
 
-
 ;; ugly hack to disable flake8 checks if flake8 not working well
 (defun process-exit-code-and-output (program &rest args) 
   "Run PROGRAM with ARGS and return the exit code and output in a list."
@@ -118,8 +112,8 @@ save, so we it's ok to move to the first import line."
       (progn (venv-deactivate) 
              (venv-workon target-env-name) 
              (setq venv-current-name target-env-name) 
+             (setq pythonic-environment (concat "~/.virtualenvs/" (projectile-project-name))) 
              (message "Checkout virtualenv: %s" target-env-name)))))
-
 
 
 
@@ -135,6 +129,7 @@ save, so we it's ok to move to the first import line."
 
 
 ;; dumb search
+;; seems broken....
 (defun py-dumb-find () 
   "Dumb search in virtualenv." 
   (interactive) 
