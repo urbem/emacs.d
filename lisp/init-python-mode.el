@@ -102,6 +102,7 @@ save, so we it's ok to move to the first import line."
                                   (setq-default flycheck-disabled-checkers '(python-flake8))))
 
 
+;; alas set env for anaconda
 
 (defun venv-checkout-if-exist () 
   "Use virtualenv if present." 

@@ -159,5 +159,13 @@ or the current buffer directory."
 (global-set-key [f5] 'neotree-project-dir-toggle)
 
 
+;; force set font
+;; Set default font
+;; link: https://emacs.stackexchange.com/questions/2501/how-can-i-set-default-font-in-emacs
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 120
+                    :weight 'normal
+                    :width 'normal)
 
 (provide 'init-gui-frames)
