@@ -167,7 +167,10 @@ save, so we it's ok to move to the first import line."
                                    (buffer-file-name)) " &"))))
 
 
-
+;; so the usage is
+;; 1. create virtualenv
+;; 2. install requests
+;; 3. done
 (add-hook 'python-mode-hook 
           (lambda () 
             (local-set-key (kbd "C-c C-t") 'pytest-one) 
