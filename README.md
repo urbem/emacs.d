@@ -12,4 +12,9 @@ install packages:
 * json-navigator
 * docker
 * helpful
-
+* olivetti
+* dynamic-ruler
+* engine-mode
+* bing-dict
+* gitlab-ci-mode
+* imenu-list (markdown mode)

@@ -100,7 +100,8 @@
 ;;(global-hl-line-mode 1)
 
 ;; ruler
-(add-hook 'prog-mode-hook 'ruler-mode)
+;; we have dynamic-ruler now
+;; (add-hook 'prog-mode-hook 'ruler-mode)
 (modify-all-frames-parameters (list (cons 'cursor-type 'bar)))
 (set-cursor-color "yellow")
 

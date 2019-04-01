@@ -6,7 +6,7 @@
 ;;; Code:
 
 (require 'powerline)
-(require 'moe-theme)
+;;(require 'moe-theme)
 
 ;; Show highlighted buffer-id as decoration. (Default: nil)
 (setq moe-theme-highlight-buffer-id t)

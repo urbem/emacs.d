@@ -34,3 +34,6 @@ ido.last
 url/
 .mc-lists.el
 ede-projects.el
+eshell
+hackernews/
+transient/
