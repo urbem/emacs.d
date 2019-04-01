@@ -56,4 +56,25 @@
 
 (require-package 'restart-emacs)
 
+
+
+;;; search engine
+(require 'engine-mode)
+(engine-mode t)
+(defengine google "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s" 
+  :keybinding "g")
+
+(defengine github "https://github.com/search?ref=simplesearch&q=%s" 
+  :keybinding "h")
+
+(defengine sogou "https://www.sogou.com/web?query=%s" 
+  :keybinding "s")
+
+(defengine youdao "http://dict.youdao.com/w/eng/%s" 
+  :keybinding "y")
+
+;; bing dict
+(require 'bing-dict)
+
+
 (provide 'init-misc)
