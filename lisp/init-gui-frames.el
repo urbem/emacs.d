@@ -158,6 +158,8 @@ or the current buffer directory."
 ;; ---> all-the-icons-install-fonts
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (global-set-key [f5] 'neotree-project-dir-toggle)
+(setq neo-autorefresh t)
+(setq neo-smart-open t)
 
 
 ;; force set font

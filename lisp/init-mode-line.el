@@ -19,9 +19,9 @@
 
 ;; Finally, apply moe-theme now.
 ;; Choose what you like, (moe-light) or (moe-dark)
-(moe-dark)
+;; (moe-dark)
 
-(powerline-moe-theme)
+;; (powerline-moe-theme)
 
 
 

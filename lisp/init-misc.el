@@ -4,7 +4,7 @@
 (add-auto-mode 'tcl-mode "Portfile\\'")
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(when (fboundp 'prog-mode)
+(when (fboundp 'prog-mode) 
   (add-hook 'prog-mode-hook 'goto-address-prog-mode))
 (setq goto-address-mail-face 'link)
 
@@ -17,10 +17,10 @@
 
 (add-auto-mode 'restclient-mode ".*\\.http$")
 
-(add-hook 'restclient-mode-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 '(company-restclient))
+(add-hook 'restclient-mode-hook 
+          (lambda () 
+            (set (make-local-variable 'company-backends) 
+                 '(company-restclient)) 
             (company-mode)))
 
 
@@ -31,19 +31,19 @@
 
 
 ;; auto format shell script when save
-(defun my-shell-mode-auto-format-hook ()
+(defun my-shell-mode-auto-format-hook () 
   "Add auto format for shell mode."
-  (when (eq major-mode 'sh-mode)
-    (setq f (buffer-file-name))
+  (when (eq major-mode 'sh-mode) 
+    (setq f (buffer-file-name)) 
     (shell-command (format "shfmt -i 4 -w %s" f))))
 
 (add-hook 'after-save-hook #'my-shell-mode-auto-format-hook)
 
 
-(defun load-raml-mode ()
-  "Load raml mode."
-  (interactive)
-  (load-file "~/.emacs.d/site-lisp/modes/raml-mode.el")
+(defun load-raml-mode () 
+  "Load raml mode." 
+  (interactive) 
+  (load-file "~/.emacs.d/site-lisp/modes/raml-mode.el") 
   (raml-mode))
 
 
@@ -76,5 +76,9 @@
 ;; bing dict
 (require 'bing-dict)
 
+
+;; locale
+;; fix fucking markdown export error.
+(setenv "LANG" "en_US.UTF-8")
 
 (provide 'init-misc)

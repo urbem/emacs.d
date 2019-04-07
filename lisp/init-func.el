@@ -287,6 +287,22 @@ Version 2017-05-04"
   (message (buffer-file-name)))
 
 
+;; clean up
+
+
+(setq msv-cleanup-list '(dired-mode doc-view-mode image-mode magit-status-mode magit-log-edit-mode
+                                    debugger-mode archive-mode))
+
+(defun cleanup-buffers ()
+  "Clean up and kill buffers that are no longer needed"
+  (interactive)
+  (save-excursion (let ((count 0))
+                    (dolist (buffer (buffer-list))
+                      (set-buffer buffer)
+                      (when (member major-mode msv-cleanup-list)
+                        (setq count (1+ count))
+                        (kill-buffer buffer)))
+                    (message "Killed %i buffer(s)." count))))
 
 (provide 'init-func)
 

@@ -4,13 +4,13 @@
 
 (add-hook 'markdown-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c C-i") 'ido-imenu)
-            (imenu-list)))
+            (local-set-key (kbd "C-c C-i") 'ido-imenu)))
 
 (require-package 'markdown-toc)
 
 ;; finally
 (setq markdown-css-paths (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+;; (setq markdown-css-paths (list "http://thomasf.github.io/solarized-css/solarized-dark.min.css"))
 
 ;; index
 (add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
@@ -19,10 +19,5 @@
 
 ;; imenu-list
 (setq imenu-list-auto-resize t)
-
-(add-hook 'markdown-mode-hook
-          (lambda ()
-            (set-frame-parameter (window-frame) 'background-mode 'dark)
-            (enable-theme 'sanityinc-solarized-light)))
 
 (provide 'init-markdown)
