@@ -9,7 +9,9 @@
 (require-package 'markdown-toc)
 
 ;; finally
-(setq markdown-css-paths (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+;;(setq markdown-css-paths (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+(setq markdown-css-paths (list
+                          "https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.css"))
 ;; (setq markdown-css-paths (list "http://thomasf.github.io/solarized-css/solarized-dark.min.css"))
 
 ;; index
@@ -19,5 +21,14 @@
 
 ;; imenu-list
 (setq imenu-list-auto-resize t)
+
+;; auto space
+(require 'pangu-spacing)
+(global-pangu-spacing-mode 1)
+
+(add-hook 'markdown-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
+
 
 (provide 'init-markdown)

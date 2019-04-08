@@ -6,7 +6,7 @@
 
 ## Emacs 
 
-install packages:
+### install packages:
 
 * yaml-imenu
 * json-navigator
@@ -18,3 +18,21 @@ install packages:
 * bing-dict
 * gitlab-ci-mode
 * imenu-list (markdown mode)
+* pangu-spacing
+
+### block startup:
+* ag
+* toml-mode
+* bing-dict
+
+
+
+### neotree
+
+* neotree
+* all-the-icons
+  * M-x all-the-icons-install-fonts
+
+
+
+
