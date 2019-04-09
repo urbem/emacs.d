@@ -22,6 +22,7 @@
 (global-set-key (kbd "C-c w l") 'yd-trans-word)
 (global-set-key (kbd "C-c v f") 'hs-toggle-hiding)
 (global-set-key (kbd "C-c j d") 'dumb-jump-go)
+(global-set-key (kbd "C-c j b") 'dumb-jump-back)
 (global-set-key (kbd "C-c h l") 'helm-locate)
 (global-set-key (kbd "C-c h r") 'helm-recentf)
 (global-set-key (kbd "C-c h b") 'helm-bookmarks)
