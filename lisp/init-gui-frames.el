@@ -160,6 +160,7 @@ or the current buffer directory."
 (global-set-key [f5] 'neotree-project-dir-toggle)
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
+(setq neo-window-fixed-size nil)
 
 
 ;; force set font
