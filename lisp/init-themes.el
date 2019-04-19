@@ -29,6 +29,6 @@
   (color-theme-sanityinc-solarized-dark))
 
 
-
+(setq sml/no-confirm-load-theme t)
 
 (provide 'init-themes)
