@@ -7,6 +7,7 @@
 (require-package 'importmagic)
 (require-package 'pyimport)
 (require-package 'pydoc)
+(require-package 'pythonic)
 
 ;; anaconda for code jump and completion
 (when (maybe-require-package 'anaconda-mode) 
@@ -125,7 +126,6 @@ save, so we it's ok to move to the first import line."
     (let ((cmd (concat "virtualenv --system-site-packages ~/.virtualenvs/" target-env-name))) 
       (message "Running command: %s" cmd) 
       (shell-command (concat cmd " &")))))
-
 
 
 
