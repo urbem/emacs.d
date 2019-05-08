@@ -130,6 +130,7 @@
 
 ;;; init writer mode
 (add-auto-mode 'olivetti-mode ".*\\.write$")
+(add-auto-mode 'ruby-mode "Dangerfile")
 
 
 (provide 'init-utils)
