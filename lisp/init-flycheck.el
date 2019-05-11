@@ -9,4 +9,10 @@
 (setq flycheck-pylintrc "~/.emacs.d/config/pylintrc")
 
 
+;; golang lint
+(eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
+
+(setq flycheck-golangci-lint-config "/Users/yayu/Golang/src/krobelus/.golangci.yml")
+
+
 (provide 'init-flycheck)
