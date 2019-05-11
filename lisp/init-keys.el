@@ -28,6 +28,7 @@
 (global-set-key (kbd "C-c h b") 'helm-bookmarks)
 (global-set-key (kbd "C-c b k") 'only-current-buffer)
 (global-set-key (kbd "C-c i l") 'imenu-list-smart-toggle)
+(global-set-key (kbd "C-c b d") 'bing-dict-brief)
 
 
 (global-set-key "\C-c\C-k" 'copy-line)
